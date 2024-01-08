@@ -16,3 +16,6 @@ let m = b.splice(1,2)
 console.log(m)
 
 console.log(b)
+
+let y = ['aa','sv','ba']
+console.log(y.sort())
