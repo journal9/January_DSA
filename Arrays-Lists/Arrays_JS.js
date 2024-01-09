@@ -52,9 +52,9 @@ console.log(b)
 let y = ['aa','sv','ba']
 console.log(y)
 
+console.log("sorting alphanumeric")
 //asc order
 console.log(y.sort())
-
 //desc order
 console.log(y.sort().reverse())
 
@@ -73,3 +73,30 @@ console.log(t)
 //.filter()
 //numbersCopy = JSON.parse(JSON.stringify(nestedNumbers));
 //numbersCopy = Array.from(numbers);
+
+let u = [1,2,3,4,5,6,7,8,9,10]
+//forEach
+let sum =0
+console.log("for each")
+u.forEach(function (item){return sum+= item})
+console.log(sum)
+
+//map()
+console.log("map")
+let v = u.map(x=>x+10)
+console.log(v)
+console.log(u)
+
+//filter
+console.log("filter")
+let w = u.filter(x=>x%4==0)
+console.log(w) 
+
+//reduce
+let x = u.reduce((a,b,c)=>a+b+c)
+console.log(x) 
+
+console.log(1+2+3+4+5+6+7+8+9+10)
+
+let z = u.reduce((num,index)=>num+index)
+console.log(z) 
