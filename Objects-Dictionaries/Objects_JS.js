@@ -11,16 +11,27 @@ const user = {
 console.log(user.marks.math)
 console.log(user['marks']['math'])
 
-//ket list of key and values
+//get list of key and values
 let keys = Object.keys(user)
 console.log(keys)
-
 let values = Object.values(user)
 console.log(values)
 //give key values only for 1 level deep
-
 let items = Object.entries(user)
 console.log(items)
+
+//adding a new key-value in object
+Object.assign(user,{"street":24});
+console.log(user)
+
+//delete a key-value pair
+delete user.street
+
+//If a key is present in an object
+console.log('name' in user)
+console.log('math' in user.marks)
+console.log(user.hasOwnProperty('name'))
+console.log(user?.marks?.science!==undefined)
 
 // Object.freeze(user)
 // Object.seal(user)
@@ -40,19 +51,12 @@ console.log(clone)
 // const _ = require('lodash');
 // let good_cloned = _.cloneDeep(user)
 
-//If a key is present in an object
-console.log('name' in user)
-console.log('math' in user.marks)
-
-console.log(user.hasOwnProperty('name'))
-
-console.log(user?.marks?.science!==undefined)
-
 // combining 2 objects
 // const combineObj = Object.assign(user1, user1NewVal)
 
 // Object.freeze(user)
 // Object.seal(user)
+
 
 let score = {'math':100,"science":90,"Geography":81}
 //sorting objects
@@ -80,3 +84,7 @@ let fv = Object.fromEntries(
 )
 console.log(fv)
 // object-->array-->sort array-->create object from array
+
+//return key for a value
+Object.keys(score).find(key =>
+    object[key] === value);

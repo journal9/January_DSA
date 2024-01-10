@@ -5,6 +5,7 @@ print(my_dict['address'])
 
 length = len(my_dict)
 
+#get list of key,values and items
 print(my_dict.keys())
 print(my_dict.values())
 print(my_dict.items())
