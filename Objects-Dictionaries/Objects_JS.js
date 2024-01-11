@@ -86,5 +86,7 @@ console.log(fv)
 // object-->array-->sort array-->create object from array
 
 //return key for a value
-Object.keys(score).find(key =>
-    object[key] === value);
+let val_key = Object.keys(score).find(key =>
+    score[key] === 90);
+
+console.log(val_key)
