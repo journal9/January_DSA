@@ -26,3 +26,19 @@ enum_fruits = enumerate(fruits)
 next_element = next(enum_fruits)
 print(f"Next Element: {next_element}")
 #Next Element: (0, 'apple')
+
+# finding the last occurrence
+words = ['eat', 'sleep', 'drink', 'sleep', 'drink', 'sleep', 'go', 'come']
+element = 'sleep'
+final_index = max(index for index, item in enumerate(words) if item == element)
+print(final_index)
+
+# The range() function in Python generates a sequence of numbers.
+# range(start, stop, step)
+numbers = range(8,0,-1)
+print(numbers)
+# range(8, 0, -1)
+
+# convert to list and print it
+print(list(numbers))  
+# [8, 7, 6, 5, 4, 3, 2, 1]
