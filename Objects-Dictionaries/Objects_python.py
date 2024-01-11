@@ -1,5 +1,6 @@
 my_dict = {'name': 'John', 'age': 30, 'address': '123 Street'}
 
+#accessing elements of an dict
 print(my_dict.get('address',"Not Found"))
 print(my_dict['address'])
 
