@@ -133,3 +133,16 @@ def topKFrequent(nums: List[int], k: int) -> List[int]:
 nums=[1,1,1,3,4,3,3,4,3,5,6,7,7,4]
 k=3
 topKFrequent(nums,k)
+
+#Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
+def productExceptSelf(nums: List[int]) -> List[int]:
+    res = [1] * (len(nums))
+    for i in range(1, len(nums)):
+        res[i] = res[i-1] * nums[i-1]
+    postpr = 1
+    for i in range(len(nums) - 1, -1, -1):
+        res[i] *= postpr
+        postpr *= nums[i]
+    return res
+
+productExceptSelf([1,2,3,4])

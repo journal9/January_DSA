@@ -35,14 +35,24 @@
 # print(kc)
 # ans = list(kc.keys())
 # print(ans[:k])
-from functools import reduce
+#from functools import reduce
 nums= [1,2,3,4]
 # product = reduce((lambda x, y: x * y), nums)
-res = []
-for i in nums:
-    pd=1
-    for j in nums:
-        if j!=i:
-            pd*=j
-    res.append(pd)        
+# res = []
+# for i,n in enumerate(nums):
+#     pd=1
+#     for p,q in enumerate(nums):
+#         if p!=i:
+#             pd*=q
+#     res.append(pd)        
+# print(res)
+
+res = [1] * (len(nums))
+for i in range(1, len(nums)):
+    res[i] = res[i-1] * nums[i-1]
+postfix = 1
+print(len(nums)-1)
+for i in range(len(nums) - 1, -1, -1):
+    res[i] *= postfix
+    postfix *= nums[i]
 print(res)
