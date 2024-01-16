@@ -1,4 +1,6 @@
 # Python Counter is a container that will hold the count of each of the elements present in the container. The counter is a sub-class available inside the dictionary class.
+# Counter({'item':'count of item'})
+
 # list1 = ['x','y','z','x','x','x','y', 'z']
 # print(Counter(list1))
 # Counter({'x': 4, 'y': 2, 'z': 2})
@@ -31,6 +33,7 @@ print(f"Next Element: {next_element}")
 words = ['eat', 'sleep', 'drink', 'sleep', 'drink', 'sleep', 'go', 'come']
 element = 'sleep'
 final_index = max(index for index, item in enumerate(words) if item == element)
+#returns a list ----> find max in list
 print(final_index)
 
 # The range() function in Python generates a sequence of numbers.
@@ -38,7 +41,6 @@ print(final_index)
 numbers = range(8,0,-1)
 print(numbers)
 # range(8, 0, -1)
-
 # convert to list and print it
 print(list(numbers))  
 # [8, 7, 6, 5, 4, 3, 2, 1]
