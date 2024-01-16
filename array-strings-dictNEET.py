@@ -1,5 +1,4 @@
 # Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
-
 nums=[1,2,3,4,2]
 list_num = set(nums)
 for i in list_num:
@@ -31,6 +30,7 @@ def containsDuplicate(nums: List[int]) -> bool:
 from ast import List
 from collections import Counter
 
+#Given two strings s and t, return true if t is an anagram of s, and false otherwise.
 def isAnagram(s: str, t: str) -> bool:
     if len(s) != len(t) or set(s)!=set(t):
         return False
@@ -86,6 +86,8 @@ def isAnagram(s: str, t: str) -> bool:
 # ok = isAnagram('anagram','gramaan')
 # print(ok)
 
+#Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+#You may assume that each input would have exactly one solution, and you may not use the same element twice.
 def twoSum(nums: List[int], target: int) -> List[int]:
     for i,n in enumerate(nums):
         if target - n in nums[i+1:]:
@@ -102,7 +104,7 @@ def twoSum(nums: List[int], target: int) -> List[int]:
 
 twoSum([1,3,6,4,9,12,4],9)
 
-
+#Given an array of strings strs, group the anagrams together. You can return the answer in any order.
 def groupAnagrams(strs: List[str]) -> List[List[str]]:
         anagram_dict = {}
         for s in strs:
@@ -116,6 +118,7 @@ def groupAnagrams(strs: List[str]) -> List[List[str]]:
 strs = ["eat","tea","tan","ate","nat","bat"]
 groupAnagrams(strs)
 
+#Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order.
 def topKFrequent(nums: List[int], k: int) -> List[int]:
         cd ={}
         for n in nums:
