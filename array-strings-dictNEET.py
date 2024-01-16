@@ -115,3 +115,18 @@ def groupAnagrams(strs: List[str]) -> List[List[str]]:
 
 strs = ["eat","tea","tan","ate","nat","bat"]
 groupAnagrams(strs)
+
+def topKFrequent(nums: List[int], k: int) -> List[int]:
+        cd ={}
+        for n in nums:
+            if n in cd.keys():
+                cd[n]+=1
+            else:
+                cd[n]=1      
+        kc = dict(sorted(cd.items(), key=lambda item: item[1],reverse=True))
+        ans = list(kc.keys())
+        return ans[:k]
+
+nums=[1,1,1,3,4,3,3,4,3,5,6,7,7,4]
+k=3
+topKFrequent(nums,k)
