@@ -35,24 +35,47 @@
 # print(kc)
 # ans = list(kc.keys())
 # print(ans[:k])
-#from functools import reduce
-nums= [1,2,3,4]
+# from functools import reduce
+# nums= [1,2,0,3,4]
 # product = reduce((lambda x, y: x * y), nums)
 # res = []
 # for i,n in enumerate(nums):
-#     pd=1
-#     for p,q in enumerate(nums):
-#         if p!=i:
-#             pd*=q
-#     res.append(pd)        
+#     if n!=0:
+#         res.append(product//n)  
+#     else:
+#         temp =nums.copy()
+#         temp.pop(i)
+#         res.append(reduce((lambda x, y: x * y), temp))     
 # print(res)
 
-res = [1] * (len(nums))
-for i in range(1, len(nums)):
-    res[i] = res[i-1] * nums[i-1]
-postfix = 1
-print(len(nums)-1)
-for i in range(len(nums) - 1, -1, -1):
-    res[i] *= postfix
-    postfix *= nums[i]
-print(res)
+# res = [1] * (len(nums))
+# for i in range(1, len(nums)):
+#     res[i] = res[i-1] * nums[i-1]
+# postfix = 1
+# print(len(nums)-1)
+# for i in range(len(nums) - 1, -1, -1):
+#     res[i] *= postfix
+#     postfix *= nums[i]
+# print(res)
+
+
+board = [["5","3",".",".","7",".",".",".","."]
+,["6",".",".","1","9","5",".",".","."]
+,[".","9","8",".",".",".",".","6","."]
+,["8",".",".",".","6",".",".",".","3"]
+,["4",".",".","8",".","3",".",".","1"]
+,["7",".",".",".","2",".",".",".","6"]
+,[".","6",".",".",".",".","2","8","."]
+,[".",".",".","4","1","9",".",".","5"]
+,[".",".",".",".","8",".",".","7","9"]]
+
+r_dict= {k: [] for k in range(9)}
+c_dict = {k: [] for k in range(9)}
+for i,n in enumerate(board):
+    for j,m in enumerate(n):
+        if m!= '.':
+            c_dict[j].append(m)
+            r_dict[i].append(m)
+print(r_dict)
+print(c_dict)
+

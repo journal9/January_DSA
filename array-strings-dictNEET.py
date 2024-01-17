@@ -29,6 +29,7 @@ def containsDuplicate(nums: List[int]) -> bool:
 
 from ast import List
 from collections import Counter
+import collections
 
 #Given two strings s and t, return true if t is an anagram of s, and false otherwise.
 def isAnagram(s: str, t: str) -> bool:
@@ -145,4 +146,17 @@ def productExceptSelf(nums: List[int]) -> List[int]:
         postpr *= nums[i]
     return res
 
-productExceptSelf([1,2,3,4])
+def productExceptSelf(nums: List[int]) -> List[int]:
+        from functools import reduce
+        product = reduce((lambda x, y: x * y), nums)
+        res = []
+        for i,n in enumerate(nums):
+            if n!=0:
+                res.append(product//n)  
+            else:
+                temp =nums.copy()
+                temp.pop(i)
+                res.append(reduce((lambda x, y: x * y), temp))
+        return res
+
+productExceptSelf([1,2,3,4])   
