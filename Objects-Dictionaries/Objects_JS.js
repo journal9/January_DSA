@@ -58,7 +58,7 @@ console.log(clone)
 // Object.seal(user)
 
 
-let score = {'math':100,"science":90,"Geography":81}
+let score = {'math':100,"asience":90,"Geography":81}
 //sorting objects
 //sort by keys
 const sk = Object.keys(score).sort().reduce(
