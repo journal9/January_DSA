@@ -263,3 +263,46 @@ while i < len(p):
     i=i+int(length)+3
 decoded_str = " ".join(decoded_list)
 print(decoded_str)
+
+#Given an unsorted array of integers nums, return the length of the longest consecutive elements sequence.
+nums = [100,4,200,1,1,3,2]
+def longestConsecutive(nums: List[int]) -> int:
+    if nums == []:
+        return 0
+    a = sorted(nums)
+    count = 1
+    lc = []
+    print(a)
+    for i, n in enumerate(a):
+        if i<len(a)-1 and a[i+1]-a[i]==1:
+            count+=1
+        elif i<len(a)-1 and a[i+1]-a[i]==0:
+            continue
+        else:
+            lc.append(count)
+            count=1
+    lc.sort(reverse=True)
+    res=lc[0]
+    return res
+
+def longestConsecutive(nums: List[int]) -> int:
+        num_set = set()
+        max_length = 0
+        #place all items into the set
+        for num in nums:
+            num_set.add(num)
+        
+        for num in num_set:
+            cur_chain_len = 1
+            while num + 1 in num_set:
+                cur_chain_len +=1
+                num = num + 1
+            #if we found a chain as long as the input, were done
+            if cur_chain_len == len(num_set):
+                return cur_chain_len
+            
+            #otherwise, update max_length if cur_chain is bigger
+            if cur_chain_len > max_length:
+                max_length = cur_chain_len
+        
+        return max_length
