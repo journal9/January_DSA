@@ -322,3 +322,29 @@ def isPalindrome(s: str) -> bool:
         s = s.lower()
         s = [i for i in s if i.isalnum()]
         return s[:] == s[::-1]
+
+#Given a 1-indexed array of integers numbers that is already sorted in non-decreasing order, find two numbers such that they add up to a specific target number. Let these two numbers be numbers[index1] and numbers[index2] where 1 <= index1 < index2 <= numbers.length.
+def twoSum(numbers: List[int], target: int) -> List[int]:
+        # for i , n in enumerate(numbers):
+        #     o = target-n
+        #     numbers[i]=" "
+        #     if o in numbers:
+        #         return [i+1,numbers.index(o)+1]
+        l = 0
+        r = len(numbers) - 1
+
+        while l < r:
+            res = numbers[l] + numbers[r]
+            if res == target:
+                return[l+1,r+1]
+            if res < target:
+                l += 1
+            else:
+                r -= 1
+
+def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        left_pointer, right_pointer = 0, len(numbers) -1
+        while left_pointer < right_pointer:
+            if numbers[left_pointer] + numbers[right_pointer] == target : return left_pointer+1, right_pointer+1 
+            elif numbers[left_pointer] + numbers[right_pointer] < target: left_pointer += 1 
+            elif numbers[left_pointer] + numbers[right_pointer] > target: right_pointer -= 1
