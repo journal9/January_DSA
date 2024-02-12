@@ -1,22 +1,23 @@
-nums = [100,4,200,1,1,3,2]
-if nums == []:
-    print(0)
-a = sorted(nums)
-count = 1
-lc = []
-print(a)
-for i, n in enumerate(a):
-    if i<len(a)-1 and a[i+1]-a[i]==1:
-        count+=1
-    elif i<len(a)-1 and a[i+1]-a[i]==0:
-        continue
-    else:
-        lc.append(count)
-        count=1
-lc.sort(reverse=True)
-res=lc[0]
-print(lc)
-print(res)
+# from math import floor
+
+
+# s = "A man, a plan, an canal: Panama"
+# s2 = s.lower()
+# print(s2)
+# d = [i for i in s2 if i.isalnum()]
+# print(d)
+# for i in range(floor(len(d)/2)):
+#     if d[i]!=d[-i-1]:
+#         print('false')
+# print('true')
+
+numbers = [2,7,7,15]
+target = 14  
+for i , n in enumerate(numbers):
+    o = target-n
+    numbers[i]=" "
+    if o in numbers:
+        print(i+1,numbers.index(o)+1)    
 
     
     
