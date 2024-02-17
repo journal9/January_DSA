@@ -1,24 +1,24 @@
 Practice Link
 https://www.codingninjas.com/codestudio/guided-paths/data-structures-algorithms
-- _Arrays & Strings
+- **_Arrays & Strings**
 - Basic Array And Strings Questions
 - Kadane's Algorithm
 - Dutch National Flag Algorithm
 - Sliding Window
 - Two pointers
 - Multidimensional arrays
-- Traversal Based Problems
+- **Traversal Based Problems**
 - Rotation Based Problems
 - Recursion And Backtracking
 - Basic Recursion Questions
 - Divide And Conquer
-- Sorting Algoritms
+- **Sorting Algoritms**
 - Insertion Sort
 - Selection Sort
 - Binary Search Applications
 - Binary Search On Arrays
 - Binary Search On Matrix
-- nked Lists
+- Linked Lists
 - versal Problems
 - Sorting Problems
 - Slow And Fast Pointers
