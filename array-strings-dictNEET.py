@@ -410,3 +410,20 @@ def maxArea(height: List[int]) -> int:
     return maxArea
 
 maxArea([1,8,6,2,5,4,8,3,7])
+
+#Given an array containing integers 0, 1 and 2 representing the colors red, white and blue, sort them in-place so that the same numbers are adjacent, with the order being 0, 1 and 2.
+
+def sortColors(nums):
+    zero_ptr = curr = 0
+    two_ptr = len(nums) - 1
+ 
+    while curr <= two_ptr:
+        if nums[curr] == 0:
+            nums[curr], nums[zero_ptr] = nums[zero_ptr], nums[curr]
+            zero_ptr += 1
+            curr += 1
+        elif nums[curr] == 2:
+            nums[curr], nums[two_ptr] = nums[two_ptr], nums[curr]
+            two_ptr -= 1
+        else:
+             curr += 1
