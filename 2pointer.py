@@ -308,3 +308,29 @@ def removeDuplicates(nums):
 		# 	else:
 		# 		i += 1
 		# return len(nums)
+
+#Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The order of the elements may be changed. Then return the number of elements in nums which are not equal to val.
+# Input: nums = [0,1,2,2,3,0,4,2], val = 2
+# Output: 5, nums = [0,1,4,0,3,_,_,_]
+def removeElement(nums, val):
+        i=0
+        for j in range(0,len(nums)):
+            nums[j-i]=nums[j]
+            if nums[j]==val:
+                i+=1   
+        return len(nums)-i
+        
+        r = 0
+        for i in range(len(nums)):
+            if nums[i] != val:
+                nums[i], nums[r] = nums[r], nums[i]
+                r += 1
+        return r
+
+        k = 0
+        for n in nums:
+            if n != val:
+                nums[k] = n
+                k += 1
+        return k
+        

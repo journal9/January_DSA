@@ -211,22 +211,37 @@
 # rt = sortColors([1,0,1,2,0,2])
 # print(rt)
 
-a= [1,2,3,3,3,4,5,5]     
-def removeDuplicates(nums):
-        if len(nums) < 2: return len(nums)
-        slow, fast = 2, 2
+# a= [1,2,3,3,3,4,5,5]     
+# def removeDuplicates(nums):
+#         if len(nums) < 2: return len(nums)
+#         slow, fast = 2, 2
 
-        while fast < len(nums):
-            if nums[slow - 2] != nums[fast]:
-                nums[slow] = nums[fast]
-                slow += 1
-            fast += 1
+#         while fast < len(nums):
+#             if nums[slow - 2] != nums[fast]:
+#                 nums[slow] = nums[fast]
+#                 slow += 1
+#             fast += 1
+#         print(nums)    
+#         return slow
+
+# ret = removeDuplicates(a)
+# print(a)
+# print(ret)
+
+a=[3,2,2,4,3,5]
+def removeElement(nums, val):
+        i=0
+        for j in range(0,len(nums)):
+            print(j)
+            nums[j-i]=nums[j]
+            if nums[j]==val:
+                i+=1
         print(nums)    
-        return slow
+        return len(nums)-i
 
-ret = removeDuplicates(a)
-print(a)
+ret = removeElement(a,3)
 print(ret)
+print(a)
     
 
 
