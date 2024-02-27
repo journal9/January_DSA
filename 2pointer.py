@@ -1,4 +1,7 @@
 #Given a 1-indexed array of integers numbers that is already sorted in non-decreasing order, find two numbers such that they add up to a specific target number. Let these two numbers be numbers[index1] and numbers[index2] where 1 <= index1 < index2 <= numbers.length.
+from math import floor
+
+
 def twoSum(numbers: List[int], target: int) -> List[int]:
         # for i , n in enumerate(numbers):
         #     o = target-n
@@ -197,3 +200,69 @@ def nextPermutation(nums):
             j -= 1
         nums[i], nums[j] = nums[j], nums[i]
         nums[i + 1:] = reversed(nums[i + 1:])
+
+
+#A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.
+def isPalindrome(s):
+        s = s.lower()
+        d = [i for i in s if i.isalnum()]
+        for i in range(floor(len(d)/2)):
+            if d[i]!=d[-i-1]:
+                return False
+        return True
+
+def removeDuplicates(self, nums: List[int]) -> int:
+
+        index = 1
+        occurance = 1
+
+        for i in range(1, len(nums)):
+            if nums[i] == nums[i-1]:
+                occurance += 1
+            else:
+                occurance = 1
+
+            if occurance <= 2:
+                nums[index] = nums[i]
+                index += 1
+        
+        return index
+
+#Given an integer array nums sorted in non-decreasing order, remove some duplicates in-place such that each unique element appears at most twice. The relative order of the elements should be kept the same.
+# Input: nums = [1,1,1,2,2,3]
+# Output: 5, nums = [1,1,2,2,3,_]
+def removeDuplicates(self, nums: List[int]) -> int:
+        if len(nums) < 2: return len(nums)
+        slow, fast = 2, 2
+
+        while fast < len(nums):
+            if nums[slow - 2] != nums[fast]:
+                nums[slow] = nums[fast]
+                slow += 1
+            fast += 1
+        return slow
+        
+        # def removeDuplicates(self, nums):
+        #     k = 0
+        #     for i in nums:
+        #         if k < 2 or i != nums[k - 2]:
+        #             nums[k] = i
+        #             k += 1
+        #     return k  
+
+        # def removeDuplicates(self, nums: List[int]) -> int:
+
+        # index = 1
+        # occurance = 1
+
+        # for i in range(1, len(nums)):
+        #     if nums[i] == nums[i-1]:
+        #         occurance += 1
+        #     else:
+        #         occurance = 1
+
+        #     if occurance <= 2:
+        #         nums[index] = nums[i]
+        #         index += 1
+        
+        # return index

@@ -122,72 +122,94 @@
 # ret = fourSum([-2,-1,0,0,1,2],0)
 # print(ret)
 
-def nextPermutation(nums):
-    temp=0
-    for i in range(len(nums)-2):
-        j=i+1
-        k=j+1
-        if nums[j]>=nums[i]:
-            i+=1
-            j+=1
-            continue
-        if nums[i]>nums[j]:
-            if j==len(nums)-2:
-                nums.unshift(nums[-1])
-                nums.pop(-1)
-                return nums
-            if nums[j]<nums[k]:
-                temp=nums[k]
-                nums[k]=nums[j]
-                nums[j]=temp
-                return nums
-            else:
-                temp=nums[k]
-                nums[k]=nums[i]
-                nums[i]=temp
-                return nums  
+# def nextPermutation(nums):
+#     temp=0
+#     for i in range(len(nums)-2):
+#         j=i+1
+#         k=j+1
+#         if nums[j]>=nums[i]:
+#             i+=1
+#             j+=1
+#             continue
+#         if nums[i]>nums[j]:
+#             if j==len(nums)-2:
+#                 nums.unshift(nums[-1])
+#                 nums.pop(-1)
+#                 return nums
+#             if nums[j]<nums[k]:
+#                 temp=nums[k]
+#                 nums[k]=nums[j]
+#                 nums[j]=temp
+#                 return nums
+#             else:
+#                 temp=nums[k]
+#                 nums[k]=nums[i]
+#                 nums[i]=temp
+#                 return nums  
 
-def nextPermutation2(nums):
-    temp=0
-    for i in range(len(nums)-1,-1,-1):
-        print(nums[i])
-        j=i-1
-        print(nums[j])
-        if nums[j]<nums[i]:
-            temp=nums[j]
-            nums[j]=nums[i]
-            nums[i]=temp
-            return nums
-        else: 
-            while nums[j]>=nums[i]:
-                if j>0:
-                    j-=1 
+# def nextPermutation2(nums):
+#     temp=0
+#     for i in range(len(nums)-1,-1,-1):
+#         print(nums[i])
+#         j=i-1
+#         print(nums[j])
+#         if nums[j]<nums[i]:
+#             temp=nums[j]
+#             nums[j]=nums[i]
+#             nums[i]=temp
+#             return nums
+#         else: 
+#             while nums[j]>=nums[i]:
+#                 if j>0:
+#                     j-=1 
+#                 else:
+#                     break 
+#             #part = list(nums[j+1:i]).sort()
+#             part = sorted(nums[j+1:i+1])
+#             print(part)
+#             a=part[-1]
+#             b=nums[j]
+#             nums[j]=a
+#             part[-1]=b
+#             # nums[j] = part[-1]
+#             # part[-1]=nums[j]
+#             # print(nums[j])
+#             nums = nums[:j+1]+part
+#             # nums.unshift(nums[j-1])  
+#             # nums.pop(j+1)
+#             # temp=nums[j]
+#             return nums
+#     return nums              
+# ret = nextPermutation2([
+#     3,2,1
+# ])
+# print(ret)
+
+
+def sortColors(nums):
+        k=0
+        j=k+1
+        while k< len(nums)-2:
+            i=k
+            while j<len(nums)-1:
+                if nums[j]<nums[i]:
+                    nums[i], nums[j] = nums[j],nums[i]
+                    j+=1
+                    i+=1
+                if nums[j]==nums[i]:
+                    i+=1
+                    j+=1
                 else:
-                    break 
-            #part = list(nums[j+1:i]).sort()
-            part = sorted(nums[j+1:i+1])
-            print(part)
-            a=part[-1]
-            b=nums[j]
-            nums[j]=a
-            part[-1]=b
-            # nums[j] = part[-1]
-            # part[-1]=nums[j]
-            # print(nums[j])
-            nums = nums[:j+1]+part
-            # nums.unshift(nums[j-1])  
-            # nums.pop(j+1)
-            # temp=nums[j]
-            return nums
-    return nums              
-ret = nextPermutation2([
-    3,2,1
-])
-print(ret)
+                    j+=1
+                    
+            k+=1     
+            j=i+1
 
+        
+        return nums
 
-
-
+rt = sortColors([1,0,1,2,0,2])
+print(rt)
     
     
 
