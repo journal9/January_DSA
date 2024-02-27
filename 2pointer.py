@@ -2,7 +2,7 @@
 from math import floor
 
 
-def twoSum(numbers: List[int], target: int) -> List[int]:
+def twoSum(numbers, target):
         # for i , n in enumerate(numbers):
         #     o = target-n
         #     numbers[i]=" "
@@ -20,7 +20,7 @@ def twoSum(numbers: List[int], target: int) -> List[int]:
             else:
                 r -= 1
 
-def twoSum(self, numbers: List[int], target: int) -> List[int]:
+def twoSum(numbers, target):
         left_pointer, right_pointer = 0, len(numbers) -1
         while left_pointer < right_pointer:
             if numbers[left_pointer] + numbers[right_pointer] == target : return left_pointer+1, right_pointer+1 
@@ -29,7 +29,7 @@ def twoSum(self, numbers: List[int], target: int) -> List[int]:
 
 #Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
 
-def threeSum(nums: List[int]) -> List[List[int]]:
+def threeSum(nums):
     res = []
     nums.sort()
     for i, a in enumerate(nums):
@@ -52,7 +52,7 @@ def threeSum(nums: List[int]) -> List[List[int]]:
                     l += 1                
     return res     
 
-def threeSum(nums: List[int]) -> List[List[int]]:
+def threeSum(nums):
     nums.sort()
     triplets=[]
     for i in range(len(nums)):
@@ -75,7 +75,7 @@ def threeSum(nums: List[int]) -> List[List[int]]:
 
 # You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).
 # Find two lines that together with the x-axis form a container, such that the container contains the most water.
-def maxArea(height: List[int]) -> int:
+def maxArea(height):
     l = 0
     r = len(height) - 1
     maxArea = 0
@@ -107,7 +107,7 @@ def sortColors(nums):
              curr += 1
 
 
-    def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
+    def fourSum(nums, target):
         nums.sort()
         res_ls=[]
         for i in range(len(nums)):
@@ -129,7 +129,7 @@ def sortColors(nums):
 # Given an integer array nums of length n and an integer target, find three integers in nums such that the sum is closest to target.
 # Return the sum of the three integers.
 # You may assume that each input would have exactly one solution.    
-def threeSumClosest(self, nums: List[int], target: int) -> int:
+def threeSumClosest(nums, target):
     nums.sort()
     closest = float('inf')
     cl_sum = 0
@@ -211,7 +211,7 @@ def isPalindrome(s):
                 return False
         return True
 
-def removeDuplicates(self, nums: List[int]) -> int:
+def removeDuplicates(nums):
 
         index = 1
         occurance = 1
@@ -231,7 +231,7 @@ def removeDuplicates(self, nums: List[int]) -> int:
 #Given an integer array nums sorted in non-decreasing order, remove some duplicates in-place such that each unique element appears at most twice. The relative order of the elements should be kept the same.
 # Input: nums = [1,1,1,2,2,3]
 # Output: 5, nums = [1,1,2,2,3,_]
-def removeDuplicates(self, nums: List[int]) -> int:
+def removeDuplicates(nums):
         if len(nums) < 2: return len(nums)
         slow, fast = 2, 2
 
