@@ -186,31 +186,47 @@
 # print(ret)
 
 
-def sortColors(nums):
-        k=0
-        j=k+1
-        while k< len(nums)-2:
-            i=k
-            while j<len(nums)-1:
-                if nums[j]<nums[i]:
-                    nums[i], nums[j] = nums[j],nums[i]
-                    j+=1
-                    i+=1
-                if nums[j]==nums[i]:
-                    i+=1
-                    j+=1
-                else:
-                    j+=1
-                    
-            k+=1     
-            j=i+1
+# def sortColors(nums):
+#         k=0
+#         j=k+1
+#         while k< len(nums)-2:
+#             i=k
+#             while j<len(nums)-1:
+#                 if nums[j]<nums[i]:
+#                     nums[i], nums[j] = nums[j],nums[i]
+#                     j+=1
+#                     i+=1
+#                 if nums[j]==nums[i]:
+#                     i+=1
+#                     j+=1
+#                 else:
+#                     j+=1
+
+#             k+=1     
+#             j=i+1
 
         
-        return nums
+#         return nums
 
-rt = sortColors([1,0,1,2,0,2])
-print(rt)
-    
+# rt = sortColors([1,0,1,2,0,2])
+# print(rt)
+
+a= [1,2,3,3,3,4,5,5]     
+def removeDuplicates(nums):
+        if len(nums) < 2: return len(nums)
+        slow, fast = 2, 2
+
+        while fast < len(nums):
+            if nums[slow - 2] != nums[fast]:
+                nums[slow] = nums[fast]
+                slow += 1
+            fast += 1
+        print(nums)    
+        return slow
+
+ret = removeDuplicates(a)
+print(a)
+print(ret)
     
 
 

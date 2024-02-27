@@ -266,3 +266,45 @@ def removeDuplicates(nums):
         #         index += 1
         
         # return index
+
+#Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once. The relative order of the elements should be kept the same. Then return the number of unique elements in nums.
+# Input: nums = [1,1,2]
+# Output: 2, nums = [1,2,_]
+def removeDuplicates(nums):
+        if not nums:
+            return 0
+        k = 1
+        for i in range(1, len(nums)):
+            if nums[i] != nums[i - 1]:
+                nums[k] = nums[i]
+                k += 1
+        
+        return k
+
+        # i = 1
+        # for j in range(1, len(nums)):
+        #     if nums[j] != nums[i-1]:
+        #         nums[i] = nums[j]
+        #         i += 1
+        # return i
+
+        # nums[:] = sorted(set(nums))
+		# return len(nums)
+
+        # slow, fast = 0, 1
+		# while fast in range(len(nums)):
+		# 	if nums[slow] == nums[fast]:
+		# 		fast += 1
+		# 	else:
+		# 		nums[slow+1] = nums[fast]
+		# 		fast += 1
+		# 		slow += 1
+		# return slow + 1
+        
+        # i = 1
+		# while i < len(nums):
+		# 	if nums[i] == nums[i - 1]:
+		# 		nums.pop(i)
+		# 	else:
+		# 		i += 1
+		# return len(nums)
