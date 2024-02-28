@@ -228,20 +228,41 @@
 # print(a)
 # print(ret)
 
-a=[3,2,2,4,3,5]
-def removeElement(nums, val):
-        i=0
-        for j in range(0,len(nums)):
-            print(j)
-            nums[j-i]=nums[j]
-            if nums[j]==val:
-                i+=1
-        print(nums)    
-        return len(nums)-i
+# a=[3,2,2,4,3,5]
+# def removeElement(nums, val):
+#         i=0
+#         for j in range(0,len(nums)):
+#             print(j)
+#             nums[j-i]=nums[j]
+#             if nums[j]==val:
+#                 i+=1
+#         print(nums)    
+#         return len(nums)-i
 
-ret = removeElement(a,3)
+# ret = removeElement(a,3)
+# print(ret)
+# print(a)
+
+def strStr(haystack, needle):
+    k=0
+    indx=[]
+    if needle==haystack:
+        return 0
+
+    for i in range(len(haystack)):
+        if len(indx)==len(needle) and len(indx)!=0:
+            return indx[0]
+        if haystack[i]==needle[k]:
+            indx.append(i)
+            k+=1
+        else:
+            k=0
+    if len(indx)==len(needle):
+        return indx[0]
+    return -1
+
+ret = strStr('abc','c')
 print(ret)
-print(a)
     
 
 

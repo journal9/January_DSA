@@ -333,4 +333,22 @@ def removeElement(nums, val):
                 nums[k] = n
                 k += 1
         return k
+
+#Given two strings needle and haystack, return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
         
+def strStr(haystack, needle):
+    if needle==haystack:
+            return 0
+    if len(needle) > len(haystack):
+        return -1
+    for i in range(len(haystack) - len(needle) + 1):
+        if haystack[i:i+len(needle)] == needle:
+            return i
+    return -1
+        
+#   try:
+#     index = haystack.index(needle)
+#     return index
+#   except ValueError:
+#       return -1
+
