@@ -352,3 +352,18 @@ def strStr(haystack, needle):
 #   except ValueError:
 #       return -1
 
+# Given an input string s, reverse the order of the words.
+# A word is defined as a sequence of non-space characters. The words in s will be separated by at least one space.
+# Return a string of the words in reverse order concatenated by a single space.
+def reverseWords(self, s: str) -> str:
+        s=s.strip(" ")
+        st = s.split()
+        i=0
+        j=len(st)-1
+        while i<j:
+            st[i],st[j]=st[j],st[i]
+            i+=1
+            j-=1
+        return ' '.join(st)
+        
+        #return " ".join(s.split()[::-1])

@@ -243,27 +243,40 @@
 # print(ret)
 # print(a)
 
-def strStr(haystack, needle):
-    k=0
-    indx=[]
-    if needle==haystack:
-        return 0
+# def strStr(haystack, needle):
+#     k=0
+#     indx=[]
+#     if needle==haystack:
+#         return 0
 
-    for i in range(len(haystack)):
-        if len(indx)==len(needle) and len(indx)!=0:
-            return indx[0]
-        if haystack[i]==needle[k]:
-            indx.append(i)
-            k+=1
-        else:
-            k=0
-    if len(indx)==len(needle):
-        return indx[0]
-    return -1
+#     for i in range(len(haystack)):
+#         if len(indx)==len(needle) and len(indx)!=0:
+#             return indx[0]
+#         if haystack[i]==needle[k]:
+#             indx.append(i)
+#             k+=1
+#         else:
+#             k=0
+#     if len(indx)==len(needle):
+#         return indx[0]
+#     return -1
 
-ret = strStr('abc','c')
-print(ret)
-    
+# ret = strStr('abc','c')
+# print(ret)
+
+def reverseWords(s):
+    st = s.split(' ')
+    print(st)
+    i=0
+    j=len(st)-1
+    while i<j:
+        st[i],st[j]=st[j],st[i]
+        i+=1
+        j-=1
+    print(st) 
+    print(' '.join(st))   
+reverseWords("dog is cat")
+
 
 
 
