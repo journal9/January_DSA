@@ -307,18 +307,3 @@ def longestConsecutive(nums: List[int]) -> int:
         
         return max_length
 
-#A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.
-from math import floor
-def isPalindrome(s: str) -> bool:
-        s = s.lower()
-        d = [i for i in s if i.isalnum()]
-        for i in range(floor(len(d)/2)):
-            if d[i]!=d[-i-1]:
-                return False
-        return True
-        #return s[:] == s[::-1]
-
-def isPalindrome(s: str) -> bool:
-        s = s.lower()
-        s = [i for i in s if i.isalnum()]
-        return s[:] == s[::-1]

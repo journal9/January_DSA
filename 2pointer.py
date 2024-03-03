@@ -367,3 +367,66 @@ def reverseWords(self, s: str) -> str:
         return ' '.join(st)
         
         #return " ".join(s.split()[::-1])
+
+# Given a string s, reverse only all the vowels in the string and return it.
+# The vowels are 'a', 'e', 'i', 'o', and 'u', and they can appear in both lower and upper cases, more than once.
+def reverseVowels(s):
+    p=list(s)
+    l=0
+    r=len(p)-1
+    vowels='aeiouAEIOU'
+    while l<r:
+        if p[l] not in vowels:
+            l+=1
+        if p[r] not in vowels:
+            r-=1   
+        if p[l] in vowels and p[r] in vowels:
+            p[l],p[r]=p[r],p[l]
+            l+=1
+            r-=1
+    return ''.join(p)
+
+
+# You are given two integer arrays nums1 and nums2, sorted in non-decreasing order, and two integers m and n, representing the number of elements in nums1 and nums2 respectively.
+# Merge nums1 and nums2 into a single array sorted in non-decreasing order.
+# The final sorted array should not be returned by the function, but instead be stored inside the array nums1.
+def merge(nums1, m, nums2, n):
+    """
+    Do not return anything, modify nums1 in-place instead.
+    """
+    while n > 0:
+        if nums1[m-1] >= nums2[n-1] and m>0:
+            nums1[m+n-1] = nums1[m-1]
+            m -= 1
+        else:
+            nums1[m+n-1] = nums2[n-1]
+            n -= 1
+
+    # idx = m + n - 1
+    # while m > 0 and n > 0:
+    #     if nums1[m - 1] < nums2[n - 1]:
+    #         nums1[idx] = nums2[n - 1]
+    #         n -= 1
+    #     else:
+    #         nums1[idx] = nums1[m - 1]
+    #         m -= 1
+    #     idx -= 1
+    # while n > 0:
+    #     nums1[idx] = nums2[n - 1]
+    #     n -= 1
+    #     idx -= 1
+    
+    # i = m - 1
+    # # Initialize nums2's index
+    # j = n - 1
+    # # Initialize a variable k to store the last index of the 1st array...
+    # k = m + n - 1
+    # while j >= 0:
+    #     if i >= 0 and nums1[i] > nums2[j]:
+    #         nums1[k] = nums1[i]
+    #         k -= 1
+    #         i -= 1
+    #     else:
+    #         nums1[k] = nums2[j]
+    #         k -= 1
+    #         j -= 1

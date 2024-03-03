@@ -264,21 +264,71 @@
 # ret = strStr('abc','c')
 # print(ret)
 
-def reverseWords(s):
-    st = s.split(' ')
-    print(st)
+# def reverseWords(s):
+#     st = s.split(' ')
+#     print(st)
+#     i=0
+#     j=len(st)-1
+#     while i<j:
+#         st[i],st[j]=st[j],st[i]
+#         i+=1
+#         j-=1
+#     print(st) 
+#     print(' '.join(st))   
+# reverseWords("dog is cat")
+
+# def reverseVowels(s):
+#         p=list(s)
+#         print(p)
+#         l=0
+#         r=len(p)-1
+#         vowels='aeiouAEIOU'
+#         while l<r:
+#             if p[l] not in vowels:
+#                 l+=1
+#             if p[r] not in vowels:
+#                 r-=1   
+#             if p[l] in vowels and p[r] in vowels:
+#                 p[l],p[r]=p[r],p[l]
+#                 l+=1
+#                 r-=1
+#         return ''.join(p)
+# ret = reverseVowels('aA')
+# print(ret)
+
+def merge(nums1, m, nums2, n):
+    """
+    Do not return anything, modify nums1 in-place instead.
+    """
+    mr = []
+    t = min(n,m)
+    q=max(n,m)
     i=0
-    j=len(st)-1
-    while i<j:
-        st[i],st[j]=st[j],st[i]
-        i+=1
-        j-=1
-    print(st) 
-    print(' '.join(st))   
-reverseWords("dog is cat")
+    j=0
+    print(t)
+    while i<t:
+        print(i)
+        if nums1[i]<nums2[j]:
+            mr.append(nums1[i])
+            i+=1
+            continue
+        if nums1[i]>nums2[j]:
+            mr.append(nums2[j])
+            j+=1
+            continue
+        if nums1[i]==nums2[j]:
+            mr.append(nums1[i])
+            mr.append(nums2[j])
+            i+=1
+            j+=1
+            continue
+    if n>m:
+        mr.extend(nums1[j:])
+    else:
+        mr.extend(nums2[j:]) 
+    print(mr)   
 
-
-
+merge([1,2,4,5,7,0,0,0],5,[2,4,5],3)
 
 
 
