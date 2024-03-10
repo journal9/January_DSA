@@ -316,3 +316,14 @@ def strStr(haystack, needle):
         if haystack[i:i+len(needle)] == needle:
             return i
     return -1
+
+# Given two integer arrays nums1 and nums2, return an array of their intersection. Each element in the result must be unique and you may return the result in any order.
+# Input: nums1 = [1,2,2,1], nums2 = [2,2]
+# Output: [2]
+def intersection(nums1, nums2):
+    res = [x for x in nums1 if x in nums2]
+    return set(res)
+
+    set1 = set(nums1)
+    set2 = set(nums2)
+    return set1 & set2
