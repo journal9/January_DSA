@@ -433,18 +433,19 @@ def merge(nums1, m, nums2, n):
             
 # Given an integer array nums, rotate the array to the right by k steps, where k is non-negative.
 # Input: nums = [1,2,3,4,5,6,7], k = 3
-# Output: [5,6,7,1,2,3,4]     
-def reverse (self, nums, i, j) : 
-    li = i
-    ri = j
-    while li < ri:
-        nums[li],nums[ri]=nums[ri],nums[li]
-        li += 1
-        ri -= 1
-        
-def rotate(self, nums: List[int], k: int) -> None:
+# Output: [5,6,7,1,2,3,4]  
+class Solution:   
+    def reverse (self, nums, i, j) : 
+        li = i
+        ri = j
+        while li < ri:
+            nums[li],nums[ri]=nums[ri],nums[li]
+            li += 1
+            ri -= 1
+            
+    def rotate(self, nums, k: int) -> None:
 
-    k = k % len(nums)
-    self.reverse(nums, 0, len(nums) - k - 1);
-    self.reverse(nums, len(nums) - k, len(nums) - 1);
-    self.reverse(nums, 0, len(nums) - 1);
+        k = k % len(nums)
+        self.reverse(nums, 0, len(nums) - k - 1);
+        self.reverse(nums, len(nums) - k, len(nums) - 1);
+        self.reverse(nums, 0, len(nums) - 1);
