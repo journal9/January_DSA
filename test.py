@@ -329,18 +329,32 @@
 #     print(mr)   
 
 # merge([1,2,4,5,7,0,0,0],5,[2,4,5],3)
-def teer(nums):
-    if len(nums) < 2: return len(nums)
-    slow, fast = 2, 2
+# def teer(nums):
+#     if len(nums) < 2: return len(nums)
+#     slow, fast = 2, 2
 
-    while fast < len(nums):
-        if nums[slow - 2] != nums[fast]:
-            nums[slow] = nums[fast]
-            slow += 1
-        fast += 1
-    return slow
+#     while fast < len(nums):
+#         if nums[slow - 2] != nums[fast]:
+#             nums[slow] = nums[fast]
+#             slow += 1
+#         fast += 1
+#     return slow
 
-nums = [1,1,1,2,2,3]
-p = teer(nums)
-print(p)
-print(nums)
+# nums = [1,1,1,2,2,3]
+# p = teer(nums)
+# print(p)
+# print(nums)
+
+def rotate(nums, k):
+    nums.reverse()
+    ab= nums[:k]
+    ab.reverse()
+    cd= nums[k:]
+    cd.reverse()
+    ad = ab+cd
+    return ad
+
+
+numss = [1,2,3,4,5,6,7]
+rt = rotate(numss,3)
+print(rt)
