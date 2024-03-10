@@ -449,3 +449,17 @@ class Solution:
         self.reverse(nums, 0, len(nums) - k - 1);
         self.reverse(nums, len(nums) - k, len(nums) - 1);
         self.reverse(nums, 0, len(nums) - 1);
+
+#Kadane's Algorithm
+# Given an integer array nums, find the 
+# subarray with the largest sum, and return its sum.
+# Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
+# Output: 6
+def maxSubArray(nums):
+    maxSum = float("-inf")
+    currSum=0
+    for i in range(len(nums)):
+        currSum += nums[i]
+        maxSum = max(maxSum,currSum)
+        currSum = max(currSum,0)
+    return maxSum 

@@ -345,16 +345,30 @@
 # print(p)
 # print(nums)
 
-def rotate(nums, k):
-    nums.reverse()
-    ab= nums[:k]
-    ab.reverse()
-    cd= nums[k:]
-    cd.reverse()
-    ad = ab+cd
-    return ad
+# def rotate(nums, k):
+#     nums.reverse()
+#     ab= nums[:k]
+#     ab.reverse()
+#     cd= nums[k:]
+#     cd.reverse()
+#     ad = ab+cd
+#     return ad
 
 
-numss = [1,2,3,4,5,6,7]
-rt = rotate(numss,3)
-print(rt)
+# numss = [1,2,3,4,5,6,7]
+# rt = rotate(numss,3)
+# print(rt)
+
+
+def kad(nums):
+    maxSum = float("-inf")
+    currSum=0
+    for i in range(len(nums)):
+        currSum += nums[i]
+        currSum = max(currSum,0)
+        maxSum = max(maxSum,currSum)
+    return maxSum    
+
+
+kt = kad([4,-1,2,-7,3,4])
+print(kt)
