@@ -1,4 +1,4 @@
-let a=[2,4,6,8,4,3,9,10]
+ let a=[2,4,6,8,4,3,9,10]
 
 //length of the array
 console.log(a.length)
@@ -20,7 +20,7 @@ console.log(a)
 a.sort(function (a,b){ return b-a})
 console.log(a)
 
-//return the firest value that matches
+//return the first value that matches
 let borrow = a.find(function(value,index,array){
     return value % 3==0
 })

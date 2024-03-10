@@ -296,39 +296,51 @@
 # ret = reverseVowels('aA')
 # print(ret)
 
-def merge(nums1, m, nums2, n):
-    """
-    Do not return anything, modify nums1 in-place instead.
-    """
-    mr = []
-    t = min(n,m)
-    q=max(n,m)
-    i=0
-    j=0
-    print(t)
-    while i<t:
-        print(i)
-        if nums1[i]<nums2[j]:
-            mr.append(nums1[i])
-            i+=1
-            continue
-        if nums1[i]>nums2[j]:
-            mr.append(nums2[j])
-            j+=1
-            continue
-        if nums1[i]==nums2[j]:
-            mr.append(nums1[i])
-            mr.append(nums2[j])
-            i+=1
-            j+=1
-            continue
-    if n>m:
-        mr.extend(nums1[j:])
-    else:
-        mr.extend(nums2[j:]) 
-    print(mr)   
+# def merge(nums1, m, nums2, n):
+#     """
+#     Do not return anything, modify nums1 in-place instead.
+#     """
+#     mr = []
+#     t = min(n,m)
+#     q=max(n,m)
+#     i=0
+#     j=0
+#     print(t)
+#     while i<t:
+#         print(i)
+#         if nums1[i]<nums2[j]:
+#             mr.append(nums1[i])
+#             i+=1
+#             continue
+#         if nums1[i]>nums2[j]:
+#             mr.append(nums2[j])
+#             j+=1
+#             continue
+#         if nums1[i]==nums2[j]:
+#             mr.append(nums1[i])
+#             mr.append(nums2[j])
+#             i+=1
+#             j+=1
+#             continue
+#     if n>m:
+#         mr.extend(nums1[j:])
+#     else:
+#         mr.extend(nums2[j:]) 
+#     print(mr)   
 
-merge([1,2,4,5,7,0,0,0],5,[2,4,5],3)
+# merge([1,2,4,5,7,0,0,0],5,[2,4,5],3)
+def teer(nums):
+    if len(nums) < 2: return len(nums)
+    slow, fast = 2, 2
 
+    while fast < len(nums):
+        if nums[slow - 2] != nums[fast]:
+            nums[slow] = nums[fast]
+            slow += 1
+        fast += 1
+    return slow
 
-
+nums = [1,1,1,2,2,3]
+p = teer(nums)
+print(p)
+print(nums)

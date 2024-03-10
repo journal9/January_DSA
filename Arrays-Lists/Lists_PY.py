@@ -32,6 +32,7 @@ print(f"Next Element: {next_element}")
 # finding the last occurrence
 words = ['eat', 'sleep', 'drink', 'sleep', 'drink', 'sleep', 'go', 'come']
 element = 'sleep'
+# list comprehension
 final_index = max(index for index, item in enumerate(words) if item == element)
 #returns a list ----> find max in list
 print(final_index)
