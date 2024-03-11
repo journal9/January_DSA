@@ -327,3 +327,29 @@ def intersection(nums1, nums2):
     set1 = set(nums1)
     set2 = set(nums2)
     return set1 & set2
+
+# Given two integer arrays, A and B of size N and M, respectively. Your task is to find all the common elements in both the array.
+# Each element in the result should appear as many times as it appears in both arrays.
+# The result can be in any order.
+from collections import Counter
+def solve(A, B):
+    ret = []
+    ac = Counter(A)
+    bc = Counter(B)
+    for i in ac.keys():
+        if i in bc.keys():
+            minOcc = min(ac[i],bc[i])
+            ret.extend([i]*minOcc)
+    return ret  
+
+# Given an array of integers A, find and return whether the given array contains a non-empty subarray with a sum equal to 0.
+# If the given array contains a sub-array with sum zero return 1, else return 0.
+def solve(self, A):
+    count = 0
+    set_count = set()
+    for a in A:
+        count += a
+        if count==0 or count in set_count:
+            return 1
+        set_count.add(count)
+    return 0
