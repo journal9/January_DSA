@@ -3,7 +3,7 @@ https://www.codingninjas.com/codestudio/guided-paths/data-structures-algorithms
 - **_Arrays & Strings**
 - Basic Array And Strings Questions
 - Kadane's Algorithm
-- Dutch National Flag Algorithm
+- Dutch National Flag problem
 - Sliding Window
 - Two pointers
 - Multidimensional arrays

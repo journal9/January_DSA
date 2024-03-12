@@ -353,3 +353,31 @@ def solve(self, A):
             return 1
         set_count.add(count)
     return 0
+
+def customSortString(order, s):
+    i=0
+    k = []
+    k[:] = s
+    print(k)
+    for o in order:
+        if o in s:
+            idx = k.index(o)
+            print(idx)
+            k[i],k[idx] = k[idx],k[i]
+            i+=1
+    return "".join(k)     
+rt = customSortString('cab','abcdef')
+print(rt)
+
+def customSortString(order, s):
+    result = ""
+    mp = {}
+    for char in s:
+        mp[char] = mp.get(char, 0) + 1
+    for char in order:
+        if char in mp:
+            result += char * mp[char]
+            del mp[char]
+    for char, count in mp.items():
+        result += char * count
+    return result
