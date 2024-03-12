@@ -16,3 +16,17 @@ a=[1, 4, 2, 10, 23, 3, 1, 0, 20]
 b=4
 kt = maxSubstring(a,b)
 print(kt)
+
+#Given an integer array nums and an integer k, return true if there are two distinct indices i and j in the array such that nums[i] == nums[j] and abs(i - j) <= k.
+def containsNearbyDuplicate(nums, k):
+    n = len(nums)
+    i=0
+    if n > k:
+        while i<n-k:
+            if nums[i] in nums[i+1:i+k+1]:
+                return True
+            i+=1 
+    if len(nums[i:])<=k:
+        if len(nums[i:]) != len(set(nums[i:])):
+            return True       
+    return False  

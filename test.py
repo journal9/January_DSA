@@ -373,21 +373,38 @@
 # kt = kad([4,-1,2,-7,3,4])
 # print(kt)
 
-def st(A):
-    A.sort()
-    if 0 in A:
-        return 1
-    i , j = len(A)//2 , (len(A)//2) + 12
-    while i>0 and j<len(A):
-        s = A[i]+A[j]
-        if s>0:
-            i-=1
-        if s<0:
-            j+=1
-        if sum==0:
-            return 1
-    return 0
+# def st(A):
+#     A.sort()
+#     if 0 in A:
+#         return 1
+#     i , j = len(A)//2 , (len(A)//2) + 12
+#     while i>0 and j<len(A):
+#         s = A[i]+A[j]
+#         if s>0:
+#             i-=1
+#         if s<0:
+#             j+=1
+#         if sum==0:
+#             return 1
+#     return 0
+# kt = st([1,-1,-4,2,3,6,5])
+# print(kt)
 
+def containsNearbyDuplicate(nums, k):
+    n = len(nums)
+    i=0
+    if n > k:
+        while i<n-k+1:
+            print(i)
+            if nums[i] in nums[i+1:i+k+1]:
+                return True
+            i+=1 
+    if len(nums[i:])<=k:
+        if len(nums[i:]) != len(set(nums[i:])):
+            return True       
+    return False  
 
-kt = st([1,-1,-4,2,3,6,5])
-print(kt)
+a=[1,2,3,1]
+b=3
+ret = containsNearbyDuplicate(a,b)
+print(ret)
