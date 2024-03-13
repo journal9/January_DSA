@@ -30,3 +30,34 @@ def containsNearbyDuplicate(nums, k):
         if len(nums[i:]) != len(set(nums[i:])):
             return True       
     return False  
+
+#Given a string s, find the length of the longest substring without repeating characters.
+def lengthOfLongestSubstring(s):
+            l,r = 0,0
+            k = []
+            k[:] = s
+            max_sbstr = 0
+            substr = []
+            while r<len(k):
+                if k[r] in substr:
+                    ids = substr.index(k[r])
+                    substr[:] = substr[ids+1:]
+                    idx = k.index(k[r])
+                    l=idx+1  
+                substr.append(k[r])
+                max_sbstr = max(max_sbstr,len(substr))
+                r+=1
+            return max_sbstr
+
+        # L = ans = 0
+        # x = set()
+
+        # for R in range(len(s)):
+            
+        #     while s[R] in x:
+        #         x.remove(s[L])
+        #         L += 1
+        #     if R - L + 1 > ans:
+        #         ans = R - L + 1
+        #     x.add(s[R])
+        # return ans
