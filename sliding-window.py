@@ -61,3 +61,19 @@ def lengthOfLongestSubstring(s):
         #         ans = R - L + 1
         #     x.add(s[R])
         # return ans
+
+#Smallest subarray with sum greater than a given value
+def smallestSub(nums,x):
+    l,r = 0,0
+    curr = 0
+    length = len(nums)
+    minSub = length + 1
+    while r<length:
+        while curr<=x and r<length:
+            curr+=nums[r]
+            r+=1
+        while curr>x and l<length:
+            minSub = min(minSub,r-l) 
+            curr-=nums[l]
+            l+=1          
+    return minSub
