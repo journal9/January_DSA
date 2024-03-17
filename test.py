@@ -75,24 +75,22 @@
 # res1 = smallestSubWithSum(arr1, n1, x)
 # print(res1)
 
-def minSubArrayLen(target, nums):
-    minS = len(nums)
-    sum=nums[0]
+def minSubArrayLen(s):
+    pairs={}
+    ret=[]
     i=0
-    j=0
-    while j < len(nums) and i<=j:
-        if(sum<target):
-            j+=1
-            if j==len(nums):
-                break
-            sum+=nums[j]
+    j=i+10
+    while j<len(s)+1:
+        if s[i:j] not in pairs:
+            pairs[s[i:j]] = 1
         else:
-            minS = min(minS,j-i+1)
-            sum-=nums[i]
-            i+=1
-    print(minS)        
+            pairs[s[i:j]] += 1
+        i+=1
+        j+=1   
+    ret = [key for key,value in pairs.items() if value>1] 
+    print(ret)        
             
 
 a = [2,3,1,2,4,3]
 b = 7
-minSubArrayLen(b,a)
+minSubArrayLen("AAAAAAAAAAA")
