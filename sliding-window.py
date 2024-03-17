@@ -77,3 +77,22 @@ def smallestSub(nums,x):
             curr-=nums[l]
             l+=1          
     return minSub
+
+#Given an array of positive integers nums and a positive integer target, return the minimal length of a 
+# subarray whose sum is greater than or equal to target. If there is no such subarray, return 0 instead.
+def minSubArrayLen(target, nums):
+    minS = len(nums)
+    sum=nums[0]
+    i=0
+    j=0
+    while j < len(nums) and i<=j:
+        if(sum<target):
+            j+=1
+            if j==len(nums):
+                break
+            sum+=nums[j]
+        else:
+            minS = min(minS,j-i+1)
+            sum-=nums[i]
+            i+=1
+    print(minS)  

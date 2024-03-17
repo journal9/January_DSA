@@ -19,25 +19,25 @@
 # st= "abcabcdekbb"
 # kt = lengthOfLongestSubstring(st)
 
-def smallestSub(nums,x):
-    l,r = 0,0
-    curr = 0
-    length = len(nums)
-    minSub = length + 1
-    while r<length:
-        while curr<=x and r<length:
-            curr+=nums[r]
-            r+=1
-        while curr>x and l<length:
-            minSub = min(minSub,r-l) 
-            curr-=nums[l]
-            l+=1          
-    return minSub
+# def smallestSub(nums,x):
+#     l,r = 0,0
+#     curr = 0
+#     length = len(nums)
+#     minSub = length + 1
+#     while r<length:
+#         while curr<=x and r<length:
+#             curr+=nums[r]
+#             r+=1
+#         while curr>x and l<length:
+#             minSub = min(minSub,r-l) 
+#             curr-=nums[l]
+#             l+=1          
+#     return minSub
 
-nump = [1,4,45,52,-12,79]
-a = 51
-kt = smallestSub(nump,a)
-print(kt)
+# nump = [1,4,45,52,-12,79]
+# a = 51
+# kt = smallestSub(nump,a)
+# print(kt)
 
 # def smallestSubWithSum(arr, n, x):
  
@@ -74,3 +74,25 @@ print(kt)
 # n1 = len(arr1)
 # res1 = smallestSubWithSum(arr1, n1, x)
 # print(res1)
+
+def minSubArrayLen(target, nums):
+    minS = len(nums)
+    sum=nums[0]
+    i=0
+    j=0
+    while j < len(nums) and i<=j:
+        if(sum<target):
+            j+=1
+            if j==len(nums):
+                break
+            sum+=nums[j]
+        else:
+            minS = min(minS,j-i+1)
+            sum-=nums[i]
+            i+=1
+    print(minS)        
+            
+
+a = [2,3,1,2,4,3]
+b = 7
+minSubArrayLen(b,a)
