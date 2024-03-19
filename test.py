@@ -75,22 +75,48 @@
 # res1 = smallestSubWithSum(arr1, n1, x)
 # print(res1)
 
-def minSubArrayLen(s):
-    pairs={}
-    ret=[]
-    i=0
-    j=i+10
-    while j<len(s)+1:
-        if s[i:j] not in pairs:
-            pairs[s[i:j]] = 1
-        else:
-            pairs[s[i:j]] += 1
-        i+=1
-        j+=1   
-    ret = [key for key,value in pairs.items() if value>1] 
-    print(ret)        
+# def minSubArrayLen(s):
+#     pairs={}
+#     ret=[]
+#     i=0
+#     j=i+10
+#     while j<len(s)+1:
+#         if s[i:j] not in pairs:
+#             pairs[s[i:j]] = 1
+#         else:
+#             pairs[s[i:j]] += 1
+#         i+=1
+#         j+=1   
+#     ret = [key for key,value in pairs.items() if value>1] 
+#     print(ret)        
             
 
-a = [2,3,1,2,4,3]
-b = 7
-minSubArrayLen("AAAAAAAAAAA")
+# a = [2,3,1,2,4,3]
+# b = 7
+# minSubArrayLen("AAAAAAAAAAA")
+
+def longestSubstring(s, k):
+    i=0
+    j=i+1
+    lc = 0
+    c=k
+    while j<len(s):
+        a=s[i]
+        if s[j]!=a:
+            if c>0:
+                c-=1
+                j+=1    
+            elif c<0 and s[j]==a:
+                j+=1
+            else:
+                lc = max(lc,j-i)
+                i+=1
+                j=i+1
+                c=k   
+        else:
+            j+=1
+        if j==len(s):
+            lc = max(lc,j-i) 
+    print(lc)
+
+longestSubstring("ABAB",2)

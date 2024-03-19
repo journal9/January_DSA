@@ -102,48 +102,82 @@ def minSubArrayLen(target, nums):
 # Output: ["AAAAACCCCC","CCCCCAAAAA"]
 # s[i] is either 'A', 'C', 'G', or 'T'.
 def findRepeatedDnaSequences(s):
-        pairs={}
-        ret=[]
-        i=0
-        j=i+10
-        while j<len(s)+1:
-            if s[i:j] not in pairs:
-                pairs[s[i:j]] = 1
-            else:
-                pairs[s[i:j]] += 1
-            i+=1
-            j+=1   
-        ret = [key for key,value in pairs.items() if value>1] 
-        return ret  
-        
-        # visited=set()
-        # res=set()
-        # for i in range(9,len(s)):
-        #     a=s[i-9:i+1]
-        #     if a in visited:
-        #         res.add(a)
-        #     else:
-        #         visited.add(a)
-        # return list(res)
+    pairs={}
+    ret=[]
+    i=0
+    j=i+10
+    while j<len(s)+1:
+        if s[i:j] not in pairs:
+            pairs[s[i:j]] = 1
+        else:
+            pairs[s[i:j]] += 1
+        i+=1
+        j+=1   
+    ret = [key for key,value in pairs.items() if value>1] 
+    return ret  
+    
+    # visited=set()
+    # res=set()
+    # for i in range(9,len(s)):
+    #     a=s[i-9:i+1]
+    #     if a in visited:
+    #         res.add(a)
+    #     else:
+    #         visited.add(a)
+    # return list(res)
 
-        # if len(s) < 10:
-        #     return []
-        # substrings = []
-        # for i in range(len(s) - 9):
-        #     substrings.append(s[i:i+10])
-        # counts = Counter(substrings)
-        # result = []
-        # for substring, count in counts.items():
-        #     if count > 1:
-        #         result.append(substring)
-        # return result
+    # if len(s) < 10:
+    #     return []
+    # substrings = []
+    # for i in range(len(s) - 9):
+    #     substrings.append(s[i:i+10])
+    # counts = Counter(substrings)
+    # result = []
+    # for substring, count in counts.items():
+    #     if count > 1:
+    #         result.append(substring)
+    # return result
 
-        # l, n = 10, len(s)
-        # seen = set()
-        # output = set()
-        # for start in range(n- l + 1):
-        #     tmp = s[start:start+l]
-        #     if tmp in seen:
-        #         output.add(tmp[:])
-        #     seen.add(tmp)
-        # return output
+    # l, n = 10, len(s)
+    # seen = set()
+    # output = set()
+    # for start in range(n- l + 1):
+    #     tmp = s[start:start+l]
+    #     if tmp in seen:
+    #         output.add(tmp[:])
+    #     seen.add(tmp)
+    # return output
+
+# You are given a string s and an integer k. You can choose any character of the string and change it to any other uppercase English character. You can perform this operation at most k times.
+# Return the length of the longest substring containing the same letter you can get after performing the above operations.  
+# Input: s = "AABABBA", k = 1
+# Output: 4
+def characterReplacement(s, k):
+    alphabets = {}
+    ans = 0
+    left = 0
+    right = 0
+    max_len = 0
+    for right in range(len(s)):
+        alphabets[s[right]] = 1 + alphabets.get(s[right], 0)
+        max_len = max(max_len, alphabets[s[right]])
+        if (right - left + 1) - max_len > k:
+            alphabets[s[left]] -= 1
+            left += 1
+        else:
+            ans = max(ans, (right - left + 1))
+    return ans
+
+    # left = 0
+    # maxFreq = 0
+    # count = {}
+    # for right in range(len(s)):
+    #     count[s[right]] = 1 + count.get(s[right],0)
+    #     maxFreq = max(maxFreq, count[s[right]])
+    #     while (right-left+1) - maxFreq > k: #Checks if the string has more than k amount of edits, then do
+    #         count[s[left]] -= 1
+    #         left += 1
+    # return (right-left+1)
+
+
+
