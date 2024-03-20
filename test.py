@@ -95,28 +95,14 @@
 # b = 7
 # minSubArrayLen("AAAAAAAAAAA")
 
-def longestSubstring(s, k):
+def findAnagrams(s, p):
+    k = len(p)
     i=0
-    j=i+1
-    lc = 0
-    c=k
-    while j<len(s):
-        a=s[i]
-        if s[j]!=a:
-            if c>0:
-                c-=1
-                j+=1    
-            elif c<0 and s[j]==a:
-                j+=1
-            else:
-                lc = max(lc,j-i)
-                i+=1
-                j=i+1
-                c=k   
-        else:
-            j+=1
-        if j==len(s):
-            lc = max(lc,j-i) 
-    print(lc)
+    idcs = []
+    while i<len(s)-k:
+        if sorted(s[i:i+k])==sorted(p):
+            idcs.append(i)
+        i+=1  
+    print(idcs)      
 
-longestSubstring("ABAB",2)
+findAnagrams('abab','ab')
