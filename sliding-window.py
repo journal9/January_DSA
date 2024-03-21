@@ -179,5 +179,34 @@ def characterReplacement(s, k):
     #         left += 1
     # return (right-left+1)
 
+#Given two strings s and p, return an array of all the start indices of p's anagrams in s. You may return the answer in any order.
+# Input: s = "cbaebabacd", p = "abc"
+# Output: [0,6]
+def findAnagrams(s, p):
+    list = []
+    freqS = [0] * 26
+    freqP = [0] * 26
+
+    if len(s) < len(p):
+        return list
+    for i in range(len(p)):
+        freqS[ord(s[i]) - ord('a')] += 1
+        freqP[ord(p[i]) - ord('a')] += 1
+
+    start = 0
+    end = len(p)
+    if freqS == freqP:
+        list.append(start)
+    while end < len(s):
+        freqS[ord(s[start]) - ord('a')] -= 1
+        freqS[ord(s[end]) - ord('a')] += 1
+        if freqS == freqP:
+            list.append(start + 1)
+        start += 1
+        end += 1
+    return list  
+
+
+
 
 

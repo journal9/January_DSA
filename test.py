@@ -95,14 +95,3 @@
 # b = 7
 # minSubArrayLen("AAAAAAAAAAA")
 
-def findAnagrams(s, p):
-    k = len(p)
-    i=0
-    idcs = []
-    while i<len(s)-k+1:
-        if sorted(s[i:i+k])==sorted(p):
-            idcs.append(i)
-        i+=1  
-    print(idcs)      
-
-findAnagrams('abab','ab')
