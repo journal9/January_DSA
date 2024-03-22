@@ -95,3 +95,13 @@
 # b = 7
 # minSubArrayLen("AAAAAAAAAAA")
 
+def numSetBits(A):
+    count=0
+    b = str(bin(A))
+    for i in b:
+        if i=='1':
+            count+=1
+    return count
+
+rt = numSetBits(5)
+print(rt)        
