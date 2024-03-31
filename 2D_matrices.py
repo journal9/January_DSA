@@ -79,3 +79,35 @@ A = [[1,2,5,7,10,11,12,13,14,17,19,20,23,24,27,28,29,30,31,32,34,35,37,39,40,41,
 # A = [[1,3],[3,3]]
 rt = solve(A,91)
 print(rt)
+
+#find minimum swaps to group all numbers less than or equal to B.
+def solve(A, B):
+    swaps=0
+    ans=0
+    target = 0
+    for i in range(0,len(A)):
+        if A[i]<=B:
+            target+=1
+    l=0
+    r=target-1
+    for i in range(l,target):
+        if A[i]>B:
+            swaps+=1
+    ans=swaps        
+    l+=1
+    r=target               
+    while r<len(A):
+        if A[l-1]>B:
+            swaps-=1
+        if A[r]>B:
+            swaps+=1
+        ans = min(swaps,ans)    
+        l+=1
+        r+=1
+    return ans    
+        
+
+A = [1,12,10,3,14,10,5]
+B = 8
+rt = solve(A,B)
+print(rt)
