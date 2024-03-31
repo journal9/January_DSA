@@ -95,13 +95,42 @@
 # b = 7
 # minSubArrayLen("AAAAAAAAAAA")
 
-def numSetBits(A):
-    count=0
-    b = str(bin(A))
-    for i in b:
-        if i=='1':
-            count+=1
-    return count
+# def numSetBits(A):
+#     count=0
+#     b = str(bin(A))
+#     for i in b:
+#         if i=='1':
+#             count+=1
+#     return count
 
-rt = numSetBits(5)
-print(rt)        
+# rt = numSetBits(5)
+# print(rt)        
+
+# def solve(A, B):
+#     A.reverse()
+#     print(A)
+#     A = A[:B+1].reverse()
+#     return A
+
+# t = solve([1,2,3,4,5],2)
+# print(t)
+
+# # print(4//3)
+def solve(A):
+    max_r = -1
+    N = len(A)
+    c=N-1
+    r=0
+    while r<N and c>=0:
+        while c>=0 and A[r][c]==1:
+            max_r=r
+            c-=1
+        r+=1    
+    print(max_r)                  
+
+
+A = [   [0, 0, 1],
+         [0, 0, 1],
+         [0, 1, 1]   ]
+
+solve(A)
