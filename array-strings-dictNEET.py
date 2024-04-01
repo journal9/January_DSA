@@ -381,3 +381,42 @@ def customSortString(order, s):
     for char, count in mp.items():
         result += char * count
     return result
+
+# A beggars sitting in a row and B represents some devotees that give money to beggars from left to right indices(left,right,amount). Find to amount each beggar has at the end.
+def solve(A, B):
+    arr = [0 for x in range(A)]
+    for i in range(0,len(B)):
+        left = B[i][0]
+        right = B[i][1]
+        amount = B[i][2]
+        arr[left-1] += amount
+        if right!=A:
+            arr[right] += -amount
+    for i in range(1,len(arr)):
+        arr[i]+=arr[i-1]
+    print(arr)    
+
+A = 5
+B = [[1, 2, 10], [2, 3, 20], [2, 5, 25]]
+solve(A,B)
+
+#Trapping rain water
+def trap(A):
+    n = len(A)
+    left_max = [0]*n
+    left_max[0] = A[0]
+    for i in range(1,n):
+        left_max[i] = max(left_max[i-1],A[i])
+    right_max = [0]*n
+    right_max[n-1] = A[n-1]
+    for i in range(n-2,-1,-1):
+        right_max[i] = max(right_max[i+1],A[i])
+
+    water_trapped = 0
+    for i in range(1,n):
+        water = min(left_max[i],right_max[i])-A[i]
+        water_trapped+=water  
+    print(water_trapped)      
+
+A = [1,3,5,4,1,3,2,5,0,5]
+trap(A)

@@ -116,33 +116,23 @@
 # print(t)
 
 # # print(4//3)
-def solve(A, B):
-    swaps=0
-    ans=0
-    target = 0
-    for i in range(0,len(A)):
-        if A[i]<=B:
-            target+=1
-    l=0
-    r=target-1
-    for i in range(l,target):
-        if A[i]>B:
-            swaps+=1
-    ans=swaps        
-    l+=1
-    r=target               
-    while r<len(A):
-        if A[l-1]>B:
-            swaps-=1
-        if A[r]>B:
-            swaps+=1
-        ans = min(swaps,ans)    
-        l+=1
-        r+=1
-    return ans    
-        
 
-A = [1,12,10,3,14,10,5]
-B = 8
-rt = solve(A,B)
-print(rt)
+def trap(A):
+    n = len(A)
+    left_max = [0]*n
+    left_max[0] = A[0]
+    for i in range(1,n):
+        left_max[i] = max(left_max[i-1],A[i])
+    right_max = [0]*n
+    right_max[n-1] = A[n-1]
+    for i in range(n-2,-1,-1):
+        right_max[i] = max(right_max[i+1],A[i])
+
+    water_trapped = 0
+    for i in range(1,n):
+        water = min(left_max[i],right_max[i])-A[i]
+        water_trapped+=water  
+    print(water_trapped)      
+
+A = [1,3,5,4,1,3,2,5,0,5]
+trap(A)
