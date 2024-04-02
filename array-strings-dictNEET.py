@@ -420,3 +420,19 @@ def trap(A):
 
 A = [1,3,5,4,1,3,2,5,0,5]
 trap(A)
+
+# Find the first missing positive integer from an array of unsorted integers both positive and negative in linear time complexity.
+def firstMissingPositive(A): 
+
+    def swap(arr, i, j):
+            arr[i], arr[j] = arr[j], arr[i]
+
+    for i in range(0,len(A)):
+        while A[i] in range(1,len(A)) and A[i]!=i+1 and A[i] != A[A[i]-1]:
+            swap(A, i, A[i] - 1)
+    
+    for i in range(len(A)):
+        if A[i] != i + 1:
+            return i + 1
+    
+    return len(A) + 1

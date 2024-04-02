@@ -117,22 +117,42 @@
 
 # # print(4//3)
 
-def trap(A):
-    n = len(A)
-    left_max = [0]*n
-    left_max[0] = A[0]
-    for i in range(1,n):
-        left_max[i] = max(left_max[i-1],A[i])
-    right_max = [0]*n
-    right_max[n-1] = A[n-1]
-    for i in range(n-2,-1,-1):
-        right_max[i] = max(right_max[i+1],A[i])
+def firstMissingPositive(A): 
 
-    water_trapped = 0
-    for i in range(1,n):
-        water = min(left_max[i],right_max[i])-A[i]
-        water_trapped+=water  
-    print(water_trapped)      
+    def swap(arr, i, j):
+            arr[i], arr[j] = arr[j], arr[i]
 
-A = [1,3,5,4,1,3,2,5,0,5]
-trap(A)
+    for i in range(0,len(A)):
+        while A[i] in range(1,len(A)) and A[i]!=i+1 and A[i] != A[A[i]-1]:
+            swap(A, i, A[i] - 1)
+    
+    for i in range(len(A)):
+        if A[i] != i + 1:
+            return i + 1
+    
+    return len(A) + 1
+    # i=0
+    # while i<len(A):
+    #     if A[i] in range(1,len(A)) and A[i]!=i+1 and A[i]!=A[A[i]-1]:
+    #         A[i],A[i-1] = A[i-1],A[i]
+    #     i+=1     
+    # for i in range(0,len(A)):
+    #     if not A[i]-i==1:
+    #         return i+1
+    # i=0
+    # while i<len(A):
+    #     if A[i] in range(1,len(A)) and A[i]!=i+1:
+    #         if i==0 or A[i]!=A[A[i]-1]:
+    #             # A[i],A[A[i]-1] = A[A[i]-1],A[i]
+    #             temp = A[i]
+    #             A[i] = A[A[i]-1]
+    #             A[A[i]-1] = temp
+    #     i+=1
+    # print(A)
+    # for i in range(0,len(A)):
+    #     if not A[i]-i==1:
+    #         return i+1
+
+A = [3,6,1,2]
+r = firstMissingPositive(A)
+print(r)
