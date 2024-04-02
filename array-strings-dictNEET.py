@@ -436,3 +436,14 @@ def firstMissingPositive(A):
             return i + 1
     
     return len(A) + 1
+
+
+#return non-overlapping sorted intervals
+def solve(A):
+    Ab = []
+    for i in sorted(A, key=lambda k: k[0]):
+        if Ab and i[0] <= Ab[-1][1]:
+            Ab[-1][1] = max(Ab[-1][1], i[1])
+        else:
+            Ab.append(i)
+    return Ab
