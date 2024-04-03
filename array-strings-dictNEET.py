@@ -447,3 +447,40 @@ def solve(A):
         else:
             Ab.append(i)
     return Ab
+
+## return non-overlapping sorted intervals after inserting a new interval into sorted non overlapping intervals.
+def insert(A, B):
+    ans=[]
+    n = len(A)
+    if n==0:
+        ans.append(B)
+    elif B[1]<A[0][0]:
+        ans.append(B)
+        ans.extend(A) 
+    elif B[0] > A[-1][1]:
+        ans.extend(A)
+        ans.append(B) 
+    else:
+        i = 0
+        while i<n:
+            if A[i][1]<B[0]:
+                ans.append(A[i])
+            else:
+                break
+            i+=1
+
+        start = B[0]
+        end = B[1] 
+        i=0
+        while i< n:
+            if not (start>A[i][1] or end<A[i][0]):
+                start = min(start,A[i][0])
+                end = max(end,A[i][1])
+            else:
+                break
+            i+=1
+        ans.append([start,end])    
+        while i<n:
+            ans.append(A[i])   
+            i+=1 
+    print(ans) 
