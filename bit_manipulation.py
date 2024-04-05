@@ -51,3 +51,32 @@ def solve(A):
         if A& 1<<i >0:
             magic+=pow(5,i+1)
     return magic    
+
+# We define f(X, Y) as the number of different corresponding bits in the binary representation of X and Y.
+# For example, f(2, 7) = 2, since the binary representation of 2 and 7 are 010 and 111, respectively. The first and the third bit differ, so f(2, 7) = 2.
+def solve(A):
+    # sum = 0
+    # for i in range(0,len(A)):
+    #     for j in range(0,len(A)):
+    #         D = A[i]^A[j]
+    #         count = 0
+    #         while (D):
+    #             count += D & 1
+    #             D >>= 1
+    #         sum+=count
+    # print(sum)
+    N=len(A)
+    ans=0
+    mod=10**9+7
+    for i in range(32):
+        count1=0
+        count0=0
+        for j in range(N):
+            if (A[j]>>i)&1:
+                count1+=1
+            else:
+                count0+=1
+        ans+=(2*count1*count0) % mod
+    print(ans%mod)        
+
+solve([1, 3, 5])
