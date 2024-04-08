@@ -80,3 +80,81 @@ def solve(A):
     print(ans%mod)        
 
 solve([1, 3, 5])
+
+#Given an array of integers, every element appears thrice except for one, which occurs once.
+def singleNumber(A):
+    ans = 0
+    for i in range(31):
+        count=0
+        for j in range(len(A)):
+            if A[j]&(1<<i)>0:
+                count+=1
+        if count%3==1:
+            ans |= (1<<i)
+    return ans  
+
+# Given an array of positive integers A, two integers appear only once, and all the other integers appear twice.
+# Find the two integers that appear only once.
+def solve(A):
+    x = A[0]
+    for i in range(1,len(A)):
+        x^=A[i]
+    idx = 0
+    for i in range(31):
+        if x & (1<<i) >0:
+            idx = i
+            break
+    n1,n2=0,0
+    for i in range(0,len(A)):
+        if A[i]&(1<<idx)>0:
+            n1^=A[i]     
+        else:
+            n2^=A[i]  
+    lsit = [n1,n2] 
+    lsit.sort()       
+    return lsit
+
+# Given an array A of length N where all the elements are distinct and are in the range [1, N+2].
+# Two numbers from the range [1, N+2] are missing from the array A. Find the two missing numbers.
+def solve(A):
+    n = len(A)
+    t_sum=0
+    for i in range(n+3):
+        t_sum^=i
+    for i in range(n):
+        t_sum^=A[i]
+
+    for i in range(31):
+        if t_sum & (1<<i) >0:
+            idx = i
+            break
+    n1,n2=0,0
+    for i in range(0,len(A)):
+        if A[i]&(1<<idx)>0:
+            n1^=A[i]     
+        else:
+            n2^=A[i]  
+    for i in range(n+3):
+        if i&(1<<idx)>0:
+            n1^=i    
+        else:
+            n2^=i  
+
+    lsit = [n1,n2] 
+    lsit.sort()       
+    return lsit
+
+#Given an array A. For every pair of indices i and j (i != j), find the maximum A[i] & A[j].
+def solve(A):
+    ans = 0
+    for k in range(31,-1,-1):
+        c=0
+        for i in range(len(A)):
+            if A[i]&(1<<k)>0:
+                c+=1
+        if c>=2:
+            ans |= 1<<k
+            for j in range(0,len(A)):
+                if A[j] & (1<<k)==0:
+                    A[j]=0  
+    return ans     
