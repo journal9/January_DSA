@@ -527,3 +527,12 @@ def solve(A):
 A = [1,2,3,7,1,2,3]
 a = solve(A)
 print(a)
+
+
+#Find sum of all subarray sum in an array { CONTRIBUTION TECHNIQUE }
+def subarraySum(A):
+    n = len(A)
+    total_subarrays_sum = 0
+    for num in range(len(A)):
+        total_subarrays_sum+=A[num]*(num+1)*(n-num)
+    return total_subarrays_sum  
