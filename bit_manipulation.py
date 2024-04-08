@@ -158,3 +158,18 @@ def solve(A):
                 if A[j] & (1<<k)==0:
                     A[j]=0  
     return ans     
+
+# You are given an array of integers A of size N.
+# The value of a subarray is defined as BITWISE OR of all elements in it.
+# Return the sum of value of all subarrays of A % 109 + 7.
+def solve(A):
+    ans = 0
+    mod = 10**9 + 7
+    for i in range(31):
+        index = -1
+        for j in range(len(A)):
+            if A[j]&(1<<i)>0:
+                c = pow(2,i)
+                ans+=(len(A)-j)*c*(j-index)
+                index=j
+    return ans % mod
