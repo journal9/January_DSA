@@ -484,3 +484,46 @@ def insert(A, B):
             ans.append(A[i])   
             i+=1 
     print(ans) 
+
+#Range sum queries question
+def rangeSum(A, B):
+    item = A[0]
+    for i in range(1,len(A)):
+        A[i]+=item
+        item = A[i]
+    ans = []
+    for j in range(len(B)):
+        start = B[j][0]
+        end = B[j][1]
+        if start ==0:
+            ans.append(A[end])
+        else:
+            ans.append(A[end]-A[start-1])
+    print(ans)    
+
+A = [1, 2, 3, 4, 5]
+B = [[0, 3], [1, 2]]
+rangeSum(A,B)
+
+#find the equillibrium index where left sum  is equal to right sum
+def solve(A):
+    ans = -1
+    sum_left = 0
+    sum_right = 0
+    for i in range(len(A)):
+        sum_right+=A[i]
+    for i in range(0,len(A)):
+        if i==0:
+            sum_right=sum_right - A[i]
+            if sum_left==sum_right:
+                return i
+        else:
+            sum_left += A[i-1]
+            sum_right=sum_right - A[i]
+            if sum_left==sum_right:
+                return i+1
+    return ans   
+
+A = [1,2,3,7,1,2,3]
+a = solve(A)
+print(a)

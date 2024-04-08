@@ -238,29 +238,115 @@
 # B = [36210193,61984219]
 # insert(A,B)   
 
-def solve(A):
-    # sum = 0
-    # for i in range(0,len(A)):
-    #     for j in range(0,len(A)):
-    #         D = A[i]^A[j]
-    #         count = 0
-    #         while (D):
-    #             count += D & 1
-    #             D >>= 1
-    #         sum+=count
-    # print(sum)
-    N=len(A)
-    ans=0
-    mod=10**9+7
-    for i in range(32):
-        count1=0
-        count0=0
-        for j in range(N):
-            if (A[j]>>i)&1:
-                count1+=1
-            else:
-                count0+=1
-        ans+=(2*count1*count0) % mod
-    print(ans%mod)        
+# def solve(A):
+#     n = len(A)
+#     t_sum=0
+#     for i in range(n+3):
+#         t_sum^=i
+#     for i in range(n):
+#         t_sum^=A[i]
+#     print(t_sum)
 
-solve([1, 3, 5])
+#     for i in range(31):
+#         if t_sum & (1<<i) >0:
+#             idx = i
+#             break
+#     n1,n2=0,0
+#     for i in range(0,len(A)):
+#         if A[i]&(1<<idx)>0:
+#             n1^=A[i]     
+#         else:
+#             n2^=A[i]  
+#     lsit = [n1,n2] 
+#     lsit.sort()       
+#     print(lsit)   
+
+# solve([3, 2, 4])
+
+# def solved(A):
+#     ans = 0
+#     for k in range(31,-1,-1):
+#         c=0
+#         for i in range(len(A)):
+#             if A[i]&(1<<k)>0:
+#                 c+=1
+#         if c>=2:
+#             ans |= 1<<k
+#             for j in range(0,len(A)):
+#                 if A[j] & (1<<k)==0:
+#                     A[j]=0  
+#     print(ans)
+
+    # def solve(self, A):
+    #     ans = 0
+    #     for bit in range(30, -1, -1):
+    #         count = 0
+    #         for val in A:
+    #             # count = count + (1 if (val & (1 << bit)) else 0)  – shorthand code for below loop
+    #             if (val & (1 << bit)):
+    #                 count = count + 1
+    #         if count >= 2:
+    #             ans = ans | 1 << bit
+    #             # A = [a if (a & (1 << bit)) else 0 for a in A] – shorthand code for below loop
+    #             for i in range(0, len(A), 1):
+    #                 if (A[i] & (1 << bit)) == 0:
+    #                     A[i] = 0
+    #     return ans
+
+# solved([21,18,24,17,16])
+
+
+# def solve(A):
+#     ans = 0
+#     mod = 10**9 + 7
+#     for i in range(31):
+#         index = -1
+#         for j in range(len(A)):
+#             if A[j]&(1<<i)>0:
+#                 c = pow(2,i)
+#                 ans+=(len(A)-j)*c*(j-index)
+#                 index=j
+#     print(ans % mod)
+
+# solve([347148,221001,394957,729925,276769,40726,552988,29952,184491,146773,418965,307,219145,183037,178111,81123,109199,683929,422034,346291,11434,7327,340473,316152,364005,359269,170935,105784,224044,22563,48561,165781,9329,357681,169473,175031,605611,374501,6607,329965,76068,836137,103041,486817,195549,107317,34399,56907,37477,189690,36796,376663,39721,177563,174179,183646,217729,408031,429122,631665,282941,526797,262186,306571,63613,57501,70685,226381,1338,9360,130360,20300,400906,87823,180349,108813,18181,119185,1,102611,63591,12889,311185,383896,8701,76077,75481,386017,153553,304913,383455,105948,142885,1,12610,137005,119185,16948,66171,123683])
+
+# def rangeSum(A, B):
+#     item = A[0]
+#     for i in range(1,len(A)):
+#         A[i]+=item
+#         item = A[i]
+#     ans = []
+#     for j in range(len(B)):
+#         start = B[j][0]
+#         end = B[j][1]
+#         if start ==0:
+#             ans.append(A[end])
+#         else:
+#             ans.append(A[end]-A[start-1])
+#     print(ans)    
+
+# A = [1, 2, 3, 4, 5]
+# B = [[0, 3], [1, 2]]
+# rangeSum(A,B)
+
+def solve(A):
+    ans = -1
+    sum_left = 0
+    sum_right = 0
+    for i in range(len(A)):
+        sum_right+=A[i]
+    for i in range(0,len(A)):
+        if i==0:
+            sum_right=sum_right - A[i]
+            if sum_left==sum_right:
+                return i
+        else:
+            sum_left += A[i-1]
+            sum_right=sum_right - A[i]
+            if sum_left==sum_right:
+                return i+1
+    return ans   
+
+A = [1,2,3,7,1,2,3]
+a = solve(A)
+print(a)
