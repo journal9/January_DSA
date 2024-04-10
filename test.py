@@ -329,24 +329,109 @@
 # B = [[0, 3], [1, 2]]
 # rangeSum(A,B)
 
-def solve(A):
-    ans = -1
-    sum_left = 0
-    sum_right = 0
-    for i in range(len(A)):
-        sum_right+=A[i]
-    for i in range(0,len(A)):
-        if i==0:
-            sum_right=sum_right - A[i]
-            if sum_left==sum_right:
-                return i
-        else:
-            sum_left += A[i-1]
-            sum_right=sum_right - A[i]
-            if sum_left==sum_right:
-                return i+1
-    return ans   
+# def solve(A):
+#     ans = -1
+#     sum_left = 0
+#     sum_right = 0
+#     for i in range(len(A)):
+#         sum_right+=A[i]
+#     for i in range(0,len(A)):
+#         if i==0:
+#             sum_right=sum_right - A[i]
+#             if sum_left==sum_right:
+#                 return i
+#         else:
+#             sum_left += A[i-1]
+#             sum_right=sum_right - A[i]
+#             if sum_left==sum_right:
+#                 return i+1
+#     return ans   
 
-A = [1,2,3,7,1,2,3]
-a = solve(A)
-print(a)
+# A = [1,2,3,7,1,2,3]
+# a = solve(A)
+# print(a)
+
+# def solve(A, B):
+#     idx = 0
+#     sum = 0
+#     for i in range(B):
+#         sum+=A[i]
+#     ans = sum
+#     left = 1
+#     while left<len(A)-B+1:
+#         right = left+B-1
+#         sum-=A[left-1]
+#         sum+=A[right]
+#         if sum<ans:
+#             ans = sum
+#             idx = left
+#         left+=1
+
+#     print(idx)
+
+
+# A = [18,11,16,19,11,9,8,15,3,10,9,20,1,19]
+# B = 1
+# solve(A,B)
+
+# def solve(A):
+#     ans = []
+#     prefix = []
+#     suffix = []
+#     prefix_product = 1
+#     suffix_product = 1
+#     n = len(A)
+#     for i in range(n):
+#         prefix_product*=A[i]
+#         prefix.append(prefix_product)
+#     for i in range(n):
+#         suffix_product*=A[n-1-i] 
+#         suffix.append(suffix_product)
+#     suffix.reverse()    
+#     print(prefix)
+#     print(suffix)
+#     for i in range(n):
+#         if i==0:
+#             ans.append(suffix[i+1])  
+#         elif i==n-1:
+#             ans.append(prefix[i-1])    
+#         else:
+#             ans.append(prefix[i-1]*suffix[i+1])
+#     print(ans)        
+
+# A = [1, 2, 3, 4, 5]
+# solve(A)
+
+def solve(A, B):
+    left = []
+    right =[]
+    lsum=0
+    rsum = 0
+    max_sum = float('-inf')
+    for i in range(B):
+        lsum+=A[i]
+        rsum+=A[-i-1]
+        left.append(lsum)
+        right.append(rsum)
+    print(left)
+    print(right)
+    for i in range(B+1):
+        sum = 0
+        if i==0:
+            sum = left[-1]
+        elif i==B:
+            sum = right[-1]  
+        else:
+            sum = left[B-i-1]  + right[i-1]
+        max_sum = max(max_sum,sum)
+    # for i in range(B):
+    #     s1 = A1[:i]
+    #     s2 = A2[:B-i]
+    #     rd = s1*s2
+    #     ans = max(ans,rd)
+    print(max_sum)    
+
+
+A = [5, -2, 3 , 1, 2]
+B = 3
+solve(A,B)

@@ -536,3 +536,59 @@ def subarraySum(A):
     for num in range(len(A)):
         total_subarrays_sum+=A[num]*(num+1)*(n-num)
     return total_subarrays_sum  
+
+
+def solve(A):
+    ans = []
+    prefix = []
+    suffix = []
+    prefix_product = 1
+    suffix_product = 1
+    n = len(A)
+    for i in range(n):
+        prefix_product*=A[i]
+        prefix.append(prefix_product)
+    for i in range(n):
+        suffix_product*=A[n-1-i] 
+        suffix.append(suffix_product)
+    suffix.reverse()    
+    print(prefix)
+    print(suffix)
+    for i in range(n):
+        if i==0:
+            ans.append(suffix[i+1])  
+        elif i==n-1:
+            ans.append(prefix[i-1])    
+        else:
+            ans.append(prefix[i-1]*suffix[i+1])
+    print(ans)        
+
+A = [1, 2, 3, 4, 5]
+solve(A)
+
+def solve(A, B):
+    left = []
+    right =[]
+    lsum=0
+    rsum = 0
+    max_sum = float('-inf')
+    for i in range(B):
+        lsum+=A[i]
+        rsum+=A[-i-1]
+        left.append(lsum)
+        right.append(rsum)
+    for i in range(B+1):
+        sum = 0
+        if i==0:
+            sum = left[-1]
+        elif i==B:
+            sum = right[-1]  
+        else:
+            sum = left[B-i-1]  + right[i-1]
+        max_sum = max(max_sum,sum)
+    print(max_sum)    
+
+
+A = [5, -2, 3 , 1, 2]
+B = 3
+solve(A,B)
