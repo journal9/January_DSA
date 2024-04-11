@@ -592,3 +592,97 @@ def solve(A, B):
 A = [5, -2, 3 , 1, 2]
 B = 3
 solve(A,B)
+
+import math
+
+def solve(A):
+    N = len(A)
+    pf_even = [0] * N
+    pf_odd  = [0] * N
+    pf_even[0] = A[0]
+    pf_odd[0]  = 0
+    
+    for i in range(1,N):
+        if i & 1:
+            pf_even[i] = pf_even[i-1]
+            pf_odd[i]  = A[i] + pf_odd[i-1]
+        else:
+            pf_even[i] = A[i] + pf_even[i-1]
+            pf_odd[i]  = pf_odd[i-1]
+    print(pf_even)
+    print(pf_odd)
+    count = 0
+    for i in range(N):
+        if i == 0:
+            even_sum = 0 + (pf_odd[N-1] - pf_odd[i])
+            odd_sum  = 0  + (pf_even[N-1] - pf_even[i])
+        else:
+            even_sum = pf_even[i-1] + (pf_odd[N-1] - pf_odd[i])
+            odd_sum  = pf_odd[i-1]  + (pf_even[N-1] - pf_even[i])
+        
+        if even_sum == odd_sum:
+            count += 1
+    print(count)
+    # odd_sum = []
+    # even_sum = []
+    # c=0
+    # for i in range(len(A)):
+    #     if i==0:
+    #         even_sum.append(A[i]) 
+    #     elif i==1:
+    #         odd_sum.append(A[i]) 
+    #     elif i%2==0:
+    #         even_sum.append(even_sum[-1]+A[i])
+    #     else:
+    #         odd_sum.append(odd_sum[-1]+A[i])
+
+    # print(even_sum)
+    # print(odd_sum)        
+    # for i in range(len(A)):
+    #     if i==0:
+    #         te = odd_sum[-1]
+    #         to = even_sum[-1]-even_sum[i]
+    #     elif i==1:
+    #         te = even_sum[i-1]+odd_sum[-1]-odd_sum[i-1]
+    #         to = even_sum[-1]-even_sum[i-1]
+    #     else:
+    #         te = even_sum[math.ceil((i//2))-1]+odd_sum[-1]-odd_sum[math.ceil((i//2))-1]
+    #         to = odd_sum[math.ceil((i//2))-1]+even_sum[-1]-even_sum[math.ceil((i//2))-1]
+    #     if to==te:
+    #         c+=1
+    # print(c)        
+
+
+# A = [1,1,1]
+# solve(A)
+
+# def plusOne(A):
+#     strt_z = 0
+#     if A==[] or A==[0]:
+#         return [1]
+#     for i in range(len(A)):
+#         if A[i]!=0:
+#             break
+#         strt_z+=1
+#     if A[0]==0 and strt_z==len(A):
+#         return [1]  
+#     carry = 1
+#     for i in range(len(A)-1,-1,-1):
+#         sum=A[i]+carry
+#         if sum>9:
+#             carry=1 
+#             if i==0:
+#                 A[i] = 1
+#                 A.append(0) 
+#             else:
+#                 A[i] = 0
+#         else:
+#             carry=0
+#             A[i] = sum
+#             break
+#     ans = A[strt_z:]
+#     print(ans)   
+
+
+# A=[]
+# plusOne(A)
