@@ -11,9 +11,9 @@ class Solution:
         n=n//10
         return self.sumDigit(sum,n)
 
-C = Solution()
-q = C.solve(10000000)
-print(q)
+# C = Solution()
+# q = C.solve(10000000)
+# print(q)
 
 #You are given an integer A, print A to 1 using using recursion.
 class Solution:
@@ -54,3 +54,27 @@ class Solution:
         if A<=1:
             return A
         return (self.fibo(A-1)+ self.fibo(A-2))
+
+#Write a recursive function that checks whether string A is a palindrome or Not.
+class Solution:
+    # @param A : string
+    # @return an integer
+    def solve(self, A):
+        i = 0
+        j = len(A)-1
+        return self.pal(i,j,A)
+
+    def pal(self,i,j,n):
+        if i > j:    # base condition
+            return 1
+        if n[i] == n[j]:    # Actual Logic
+            i += 1
+            j -= 1
+            return self.pal(i,j,n)
+        
+        else:
+            return 0
+    
+c = Solution()
+q = c.solve("strings")
+print(q)
