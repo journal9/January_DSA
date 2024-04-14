@@ -620,3 +620,4 @@ def flip(A):
             r = i
             maxZ = zeros
     return [l+1, r+1]
+
