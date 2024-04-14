@@ -436,36 +436,36 @@
 # B = 3
 # solve(A,B)
 
-import math
+# import math
 
-def solve(A):
-    N = len(A)
-    pf_even = [0] * N
-    pf_odd  = [0] * N
-    pf_even[0] = A[0]
-    pf_odd[0]  = 0
+# def solve(A):
+#     N = len(A)
+#     pf_even = [0] * N
+#     pf_odd  = [0] * N
+#     pf_even[0] = A[0]
+#     pf_odd[0]  = 0
     
-    for i in range(1,N):
-        if i & 1:
-            pf_even[i] = pf_even[i-1]
-            pf_odd[i]  = A[i] + pf_odd[i-1]
-        else:
-            pf_even[i] = A[i] + pf_even[i-1]
-            pf_odd[i]  = pf_odd[i-1]
-    print(pf_even)
-    print(pf_odd)
-    count = 0
-    for i in range(N):
-        if i == 0:
-            even_sum = 0 + (pf_odd[N-1] - pf_odd[i])
-            odd_sum  = 0  + (pf_even[N-1] - pf_even[i])
-        else:
-            even_sum = pf_even[i-1] + (pf_odd[N-1] - pf_odd[i])
-            odd_sum  = pf_odd[i-1]  + (pf_even[N-1] - pf_even[i])
+#     for i in range(1,N):
+#         if i & 1:
+#             pf_even[i] = pf_even[i-1]
+#             pf_odd[i]  = A[i] + pf_odd[i-1]
+#         else:
+#             pf_even[i] = A[i] + pf_even[i-1]
+#             pf_odd[i]  = pf_odd[i-1]
+#     print(pf_even)
+#     print(pf_odd)
+#     count = 0
+#     for i in range(N):
+#         if i == 0:
+#             even_sum = 0 + (pf_odd[N-1] - pf_odd[i])
+#             odd_sum  = 0  + (pf_even[N-1] - pf_even[i])
+#         else:
+#             even_sum = pf_even[i-1] + (pf_odd[N-1] - pf_odd[i])
+#             odd_sum  = pf_odd[i-1]  + (pf_even[N-1] - pf_even[i])
         
-        if even_sum == odd_sum:
-            count += 1
-    print(count)
+#         if even_sum == odd_sum:
+#             count += 1
+#     print(count)
     # odd_sum = []
     # even_sum = []
     # c=0
@@ -498,34 +498,125 @@ def solve(A):
 
 # A = [1,1,1]
 # solve(A)
+# import math
+# def plusOne(A):
+#     strt_z = 0
+#     if A==[] or A==[0]:
+#         return [1]
+#     for i in range(len(A)):
+#         if A[i]!=0:
+#             break
+#         strt_z+=1
+#     if A[0]==0 and strt_z==len(A):
+#         return [1]  
+#     carry = 1
+#     for i in range(len(A)-1,-1,-1):
+#         sum=A[i]+carry
+#         if sum>9:
+#             carry=1 
+#             if i==0:
+#                 A[i] = 1
+#                 A.append(0) 
+#             else:
+#                 A[i] = 0
+#         else:
+#             carry=0
+#             A[i] = sum
+#             break
+#     ans = A[strt_z:]
+#     print(ans)   
 
-def plusOne(A):
-    strt_z = 0
-    if A==[] or A==[0]:
-        return [1]
+
+# A=[]
+# plusOne(A)
+
+# def solve(A):
+#     t = 0
+#     X=0
+#     Y=0
+#     p=0
+#     q=0
+#     for i in range(32):
+#         if A& (1<<i)>0:
+#             t =A ^ 1<<i
+#     if A!=0:
+#         for i in range(32):
+#             if t& (1<<i)>0:
+#                 p=i
+#                 break
+#         X = t ^ (1<<p)
+
+#     for i in range(32):
+#         if A& (1<<i)>0:
+#             q=i
+#     Y = t ^ (1<<(q+1))
+#     #return X ^ Y
+#     X,Y=0,0
+#     L=int(math.log(A,2))+1 
+#     #limit for 1<<i or 2**i,
+#     #in case of 5,L=3,  5=101-->3 digit
+#     #in case of 7,L=3,   7=111-->3 digit
+#     #in case of 63,L=6,  63=111111-->6 digit
+
+#     i=0
+#     for i in range(L):
+#         if not A>>i&1:# if 0 in ith position
+#             X+=1<<i# X=X |1<<i
+
+#     Y=1<<L
+
+#     return X^Y   
+
+# d = solve(1)
+# print(d)
+
+
+def flip(A):
+    a = [-1 if i == '1' else 1 for i in A]
+    csum, bsum, s, e, idx = 0, 0, 0, 0, 0
+    for i in range(len(a)):
+        csum += a[i]
+        if csum < 0:
+            csum, idx = 0, i + 1
+        if csum > bsum:
+            bsum, s, e = csum, idx, i
+    return [] if bsum == 0 else [s + 1, e + 1]
+    l=-1
+    r=-1
+    ans=[]
     for i in range(len(A)):
-        if A[i]!=0:
-            break
-        strt_z+=1
-    if A[0]==0 and strt_z==len(A):
-        return [1]  
-    carry = 1
-    for i in range(len(A)-1,-1,-1):
-        sum=A[i]+carry
-        if sum>9:
-            carry=1 
-            if i==0:
-                A[i] = 1
-                A.append(0) 
-            else:
-                A[i] = 0
-        else:
-            carry=0
-            A[i] = sum
-            break
-    ans = A[strt_z:]
-    print(ans)   
+        if A[i]==1:
+            l=i
+            r=-1
+        r+=1
+    if l==-1 or r==-1:
+        return ans
+    else:
+        ans=[l+1,r+1]
+        return ans
+    
+f = flip("0101")
+print(f)
 
-
-A=[]
-plusOne(A)
+def flip(A):
+    n = len(A)
+    maxZ = float('inf')
+    zeros = 0
+    l = 0
+    r = 0
+    if A.count('1') == n :
+        return []
+    start  = 0
+    for i in range(n) :
+        if A[i] == '1' :
+            zeros -= 1
+        else :
+            zeros += 1
+        if zeros < 0 :
+            start = i + 1
+            zeros = 0
+        if zeros > maxZ:
+            l = start
+            r = i
+            maxZ = zeros
+    return [l+1, r+1]
