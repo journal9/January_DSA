@@ -122,3 +122,56 @@ class Solution:
 s = Solution()
 q = s.generateParenthesis(2)
 print(q)
+
+
+#Given a set of distinct integers A, return all possible subsets.
+class Solution:
+	# @param A : list of integers
+	# @return a list of list of integers
+    def __init__(self):
+        self.res = []
+
+    def substr(self,A,curr,idx,res):
+        if idx==len(A):
+            self.res.append(sorted(curr.copy())) #passing shallow copy
+            return
+        self.substr(A,curr,idx+1,res)
+        curr.append(A[idx])
+        self.substr(A,curr,idx+1,res)
+        curr.pop(len(curr)-1)
+
+    def subsets(self, A):
+        self.substr(A,[],0,self.res)
+        return sorted(self.res)
+    
+s = Solution()
+q = s.subsets([1,2,3])
+print(q)
+
+
+#Given an integer array A of size N denoting collection of numbers , return all possible permutations.
+class Solution:
+	# @param A : list of integers
+	# @return a list of list of integers
+    def __init__(self):
+        self.res = []
+
+    def per(self,A,idx,ans,visit):
+        n = len(A)
+        if idx==len(A):
+            temp  = ans.copy()
+            self.res.append(temp)
+            return
+        for i in range(len(A)):
+            if not visit[i]:
+                visit[i] = True
+                ans[idx] = A[i]
+                self.per(A,idx+1,ans,visit)
+                visit[i]=False
+
+    def permute(self, A):
+        n = len(A)
+        visit = [False]*n
+        ans = [0]*n
+        self.per(A,0,ans,visit)
+        return self.res
