@@ -78,3 +78,47 @@ class Solution:
 c = Solution()
 q = c.solve("strings")
 print(q)
+
+#Return 1 if the sum of digits of number till single digit is 1 , else 0
+class Solution:
+    # @param A : integer
+    # @return an integer
+    def solve(self, A):
+        while True:
+            if A // 10 == 0:
+                if A == 1:
+                    return 1
+                else:
+                    return 0
+            else:
+                A = sum_of_digits(A)
+
+def sum_of_digits(n):
+    if n == 0:
+        return 0
+    return sum_of_digits(n//10) + n%10
+
+s = Solution()
+q = s.solve(83557)
+print(q)
+
+#generate valid parenthesis list of length A
+class Solution:
+    # @param A : integer
+    # @return a list of strings
+    def par(self,ans,n,openc,closec,res):
+        if len(ans)==2*n:
+            res.append(ans)
+        if openc<n:
+            self.par(ans+'(',n,openc+1,closec,res)
+        if closec<openc:
+            self.par(ans+')',n,openc,closec+1,res)
+        return res
+
+    def generateParenthesis(self, A):
+        return self.par('',A,0,0,[])
+
+
+s = Solution()
+q = s.generateParenthesis(2)
+print(q)
