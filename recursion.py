@@ -175,3 +175,30 @@ class Solution:
         ans = [0]*n
         self.per(A,0,ans,visit)
         return self.res
+
+#generate strings s.t. 0->01 and 1-> 10
+class Solution:
+    # @param A : integer
+    # @param B : integer
+    # @return an integer
+    def solve(self, A, B):
+        x = self.sym('0',A,B,'')
+        return x[B]
+
+    def sym(self,ans,a,b,res):
+        if a==0:
+            return ans
+        for i in range(len(ans)):
+            if ans[i]=='0':
+                res = res+'01'
+            if ans[i]=='1':
+                res = res+'10'
+        ans = res
+        res = ''
+        a-=1
+        return self.sym(ans,a,b,res)
+
+
+s = Solution()
+q = s.solve(4,3)
+print(q)
