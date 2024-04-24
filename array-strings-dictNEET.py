@@ -686,3 +686,20 @@ def solve(A):
 
 # A=[]
 # plusOne(A)
+
+def solve(A):
+    sum = 0
+    mod = pow(10,9)+7
+    F=[0]*1001
+    print(len(F))
+    for k in A:
+        F[k]+=1
+    for i in range(1,1000):
+        for j in range(1,1000):
+            val = i % j
+            freq = val*F[i]*F[j]
+            sum = (sum % mod + freq % mod) % mod
+    return sum
+
+f = solve([686,675,758,659,377,965,430,220,599,699])
+print(f)
