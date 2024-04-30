@@ -198,7 +198,77 @@ class Solution:
         a-=1
         return self.sym(ans,a,b,res)
 
-
 s = Solution()
 q = s.solve(4,3)
 print(q)
+
+
+# BACKTRACKING
+#All Possible Combinations
+# A = ['ab', 'cd']
+# Output 1:
+# ['ac', 'ad', 'bc', 'bd']
+class Solution:
+    # @param A : list of strings
+    # @return a list of strings
+    def recr(self,A,ans,res,idx):
+        if idx==len(A):
+            res.append(ans)
+            return
+        for i in range(len(A[idx])):
+            ans+=A[idx][i]
+            self.recr(A,ans,res,idx+1)
+            ans = ans[:-1]
+    
+    def specialStrings(self, A):
+         ans=''
+         res=[]
+         idx = 0
+         self.recr(A,ans,res,idx)
+         return res
+    
+class Solution:
+	# @param A : list of integers
+	# @return a list of list of integers
+	def perm(self,A,idx,vst,ans,res):
+		if idx==len(A):
+			if ans not in res:
+				res.append(ans.copy())
+			return res
+		for i in range(len(A)):
+			if not vst[i]:
+				vst[i]= True
+				ans[idx]=A[i]
+				self.perm(A,idx+1,vst,ans,res)
+				vst[i]=False
+
+	def permute(self, A):
+		idx = 0
+		n = len(A)
+		m = len(set(A))
+		vst=[False]*n
+		ans = [0]*n
+		res = []
+		self.perm(A,idx,vst,ans,res)
+		return res
+    
+def perm(A,n,index,results,dic):
+    if index == n:
+        if str(A[:]) not in dic:
+            results.append(A[:])
+            dic[str(A[:])] = 1
+        return
+    for j in range(index,n):
+        A[index],A[j] = A[j], A[index]
+        perm(A,n,index+1,results,dic)
+        A[index],A[j] = A[j], A[index]
+
+class Solution:
+	# @param A : list of integers
+	# @return a list of list of integers
+    def permute(self, A):
+        results = []
+        n = len(A)
+        dic = {}
+        perm(A,n,0,results,dic)
+        return results
