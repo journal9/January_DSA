@@ -272,3 +272,32 @@ class Solution:
         dic = {}
         perm(A,n,0,results,dic)
         return results
+
+#langest path in a matrix of hurdles to go from source to destination.    
+def longestPath(s,d,m):
+    n = len(m)
+    p = len(m[0])
+    [sr,sc] = s
+    [er,ec] = d
+    rd = [0,-1,1,0]
+    cd = [-1,0,0,1]
+    maxPath = -1
+    if sr==er and sc==ec:
+        return 0
+    m[sr][sc] = 2
+    for i in range(4):
+        nr = sr + rd[i]
+        nc = sc + cd[i]
+        if 0<=nr and nr<n and 0<=nc and nc<p and m[nr][nc]==1:
+            l = longestPath([nr,nc],d,m)
+            if l!=-1:
+                maxPath=max(maxPath,l+1)
+    m[sr][sc] = 1
+    return  maxPath
+
+
+s= [1,1] 
+d = [0,3]
+m = [[1,1,0,1],[1,1,0,1],[1,1,1,1]]
+v = longestPath(s,d,m)
+print(v)
