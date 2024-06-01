@@ -102,6 +102,66 @@ class MyLinkedList:
             curr = curr.next
         curr.next = curr.next.next
 
+    def remove(self,value):
+        if self.head == None:
+            print('Linked List is empty')
+            return
+        else:
+            curr = self.head
+            if curr.data == value:
+                self.head = curr.next
+                return
+            while curr:
+                if curr.next.data == value:
+                    curr.next = curr.next.next
+                    return
+                curr = curr.next
+
+    # Reverse a linked list
+    def reverse(self):
+        if not self.head:
+            return 
+        prev = self.head
+        curr = prev.next
+        prev.next = None
+        while curr:
+            nexx = curr.next
+            curr.next = prev
+            prev = curr
+            curr = nexx
+        self.head = prev
+        return 
+    
+    def reverseBetween(self, B, C):
+        if self.head==None or self.head.next==None:
+            return
+        curr = self.head
+        for _ in range(1,B-1):
+            curr = curr.next
+        if curr==self.head and B==1:
+            inti = None
+            prev = curr
+        else:
+            inti = curr
+            prev = curr.next
+        cs = prev
+        cur = prev.next
+        for _ in range(B,C):
+            nex = cur.next
+            cur.next = prev
+            prev = cur
+            cur = nex
+        if inti!=None:
+            inti.next = prev
+        else:
+            self.head = prev
+        cs.next = cur
+        return
+
+    def isPalindrome(self):
+        pass
+
+    
 ll = MyLinkedList()
 ll.head = Node(1)
 
@@ -139,5 +199,17 @@ ll.getLL()
 print('-----------------')
 
 ll.removeAt(8)
+ll.getLL()
+print('-----------------')
+
+ll.remove(17)
+ll.getLL()
+print('-----------------')
+
+ll.reverse()
+ll.getLL()
+print('-----------------')
+
+ll.reverseBetween(2,3)
 ll.getLL()
 print('-----------------')
