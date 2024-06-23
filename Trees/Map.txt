@@ -1,0 +1,23 @@
+Binary Trees
+
+--class problems--
+1. searching
+2. insertion
+3. deletion
+4. inorder
+5. postorder
+6. preorder
+7. height of binary Tree
+8. level-order
+9. creation of binary Trees
+10. right-view
+11. left-view
+12. vertical-order traversal
+13. top-view
+14. botton-view
+15. smallest
+16. largest
+17. validate BST
+18. chack for balanced Tree
+
+

@@ -158,9 +158,6 @@ class MyLinkedList:
         cs.next = cur
         return
 
-    def isPalindrome(self):
-        pass
-
     
 ll = MyLinkedList()
 ll.head = Node(1)

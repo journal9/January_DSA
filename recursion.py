@@ -75,9 +75,9 @@ class Solution:
         else:
             return 0
     
-c = Solution()
-q = c.solve("strings")
-print(q)
+# c = Solution()
+# q = c.solve("strings")
+# print(q)
 
 #Return 1 if the sum of digits of number till single digit is 1 , else 0
 class Solution:
@@ -98,9 +98,9 @@ def sum_of_digits(n):
         return 0
     return sum_of_digits(n//10) + n%10
 
-s = Solution()
-q = s.solve(83557)
-print(q)
+# s = Solution()
+# q = s.solve(83557)
+# print(q)
 
 #generate valid parenthesis list of length A
 class Solution:
@@ -119,9 +119,9 @@ class Solution:
         return self.par('',A,0,0,[])
 
 
-s = Solution()
-q = s.generateParenthesis(2)
-print(q)
+# s = Solution()
+# q = s.generateParenthesis(2)
+# print(q)
 
 
 #Given a set of distinct integers A, return all possible subsets.
@@ -144,9 +144,9 @@ class Solution:
         self.substr(A,[],0,self.res)
         return sorted(self.res)
     
-s = Solution()
-q = s.subsets([1,2,3])
-print(q)
+# s = Solution()
+# q = s.subsets([1,2,3])
+# print(q)
 
 
 #Given an integer array A of size N denoting collection of numbers , return all possible permutations.
@@ -176,6 +176,10 @@ class Solution:
         self.per(A,0,ans,visit)
         return self.res
 
+# s = Solution()
+# k = s.permute([2,3,4])
+# print(k)
+
 #generate strings s.t. 0->01 and 1-> 10
 class Solution:
     # @param A : integer
@@ -198,9 +202,9 @@ class Solution:
         a-=1
         return self.sym(ans,a,b,res)
 
-s = Solution()
-q = s.solve(4,3)
-print(q)
+# s = Solution()
+# q = s.solve(4,3)
+# print(q)
 
 
 # BACKTRACKING
@@ -273,6 +277,10 @@ class Solution:
         perm(A,n,0,results,dic)
         return results
 
+s = Solution()
+z = s.permute([1,2,1])
+print(z)
+
 #langest path in a matrix of hurdles to go from source to destination.    
 def longestPath(s,d,m):
     n = len(m)
@@ -296,8 +304,43 @@ def longestPath(s,d,m):
     return  maxPath
 
 
-s= [1,1] 
-d = [0,3]
-m = [[1,1,0,1],[1,1,0,1],[1,1,1,1]]
-v = longestPath(s,d,m)
-print(v)
+# s= [1,1] 
+# d = [0,3]
+# m = [[1,1,0,1],[1,1,0,1],[1,1,1,1]]
+# v = longestPath(s,d,m)
+# print(v)
+
+# class Solution:
+#     # @param A : list of integers
+#     # @return an integer
+#     def issquare(self, x, y):
+#         '''To find square root by doing their sum and then comparing back the integer value'''
+#         num=int((x+y)**(0.5))
+#         return num*num==(x+y)
+
+#     def recurse(self,A, current, result):
+#         if current==len(A):
+#             result.append(A.copy())
+#             return
+        
+#         for i in range(current, len(A)):
+#             if i!=current and A[current]==A[i]:
+#                 continue
+#             A[current], A[i]=A[i], A[current]
+#             # checking if A is already added to result or not
+#             # helps for the case [2,4,4] -> sawpping 2 with 4 ay 1th index and then 4 at 2nd index
+#             # if present alredy , undo the swap and continue
+#             if A in result:
+#                 A[current], A[i]=A[i], A[current]
+#                 continue
+#             # the below code makes sure that elements till current are adjacent squares. Then only recurse
+#             if current==0 or (i>0 and self.issquare(A[current],A[current-1])==True):
+#                 self.recurse(A, current+1, result)
+#             A[current], A[i]=A[i], A[current]
+
+#     def solve(self, A):
+#         if len(A)==1:
+#             return 0
+#         result=[]
+#         self.recurse(A, 0, result)
+#         return len(result)

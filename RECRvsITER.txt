@@ -1,0 +1,89 @@
+Recursion can be more suitable than iteration in several types of problems, particularly those that involve:
+
+1. **Divide and Conquer**:
+    - **Merge Sort**: This sorting algorithm divides the list into halves, recursively sorts each half, and then merges the sorted halves.
+    - **Quick Sort**: This algorithm selects a pivot, partitions the array around the pivot, and then recursively sorts the partitions.
+
+2. **Tree Traversals**:
+    - **Binary Tree Traversal**: Operations like in-order, pre-order, and post-order traversal are naturally recursive as they involve visiting nodes and then recursively visiting their children.
+    - **Graph Traversal**: Depth-First Search (DFS) can be elegantly implemented using recursion.
+
+3. **Dynamic Programming**:
+    - **Fibonacci Sequence**: The recursive definition of Fibonacci numbers is straightforward, although memoization is typically required to improve efficiency.
+    - **Knapsack Problem**: The recursive approach with memoization can solve this problem by considering each item and deciding whether to include it or not.
+
+4. **Backtracking**:
+    - **N-Queens Problem**: Placing N queens on an N×N chessboard such that no two queens attack each other can be effectively solved using recursion to place queens row by row.
+    - **Sudoku Solver**: This involves filling in the board cell by cell and backtracking if a contradiction is found.
+
+5. **Mathematical Problems**:
+    - **Tower of Hanoi**: This classic problem involves moving disks between pegs and is naturally recursive.
+    - **Permutations and Combinations**: Generating permutations or combinations of a set can be implemented using recursive functions.
+
+6. **Nested Structures**:
+    - **Directory Traversal**: Recursively traversing directories and subdirectories to list files.
+    - **JSON Parsing**: Processing nested JSON objects or XML structures can be done recursively.
+
+Here's a concrete example using the **Tower of Hanoi** problem:
+
+### Tower of Hanoi
+
+```python
+def tower_of_hanoi(n, source, target, auxiliary):
+    if n == 1:
+        print(f"Move disk 1 from {source} to {target}")
+        return
+    tower_of_hanoi(n-1, source, auxiliary, target)
+    print(f"Move disk {n} from {source} to {target}")
+    tower_of_hanoi(n-1, auxiliary, target, source)
+
+# Example usage:
+tower_of_hanoi(3, 'A', 'C', 'B')
+```
+
+### Fibonacci Sequence with Memoization
+
+```python
+def fibonacci(n, memo={}):
+    if n in memo:
+        return memo[n]
+    if n <= 1:
+        return n
+    memo[n] = fibonacci(n-1, memo) + fibonacci(n-2, memo)
+    return memo[n]
+
+# Example usage:
+print(fibonacci(10))  # Output: 55
+```
+
+### N-Queens Problem
+
+```python
+def solve_n_queens(n):
+    def is_safe(board, row, col):
+        for i in range(row):
+            if board[i] == col or \
+               board[i] - i == col - row or \
+               board[i] + i == col + row:
+                return False
+        return True
+
+    def solve(board, row):
+        if row == n:
+            result.append(board[:])
+            return
+        for col in range(n):
+            if is_safe(board, row, col):
+                board[row] = col
+                solve(board, row + 1)
+                board[row] = -1
+
+    result = []
+    solve([-1] * n, 0)
+    return result
+
+# Example usage:
+print(solve_n_queens(4))
+```
+
+In these examples, recursion simplifies the implementation and makes the code more readable, even though some of these problems can also be solved iteratively.
