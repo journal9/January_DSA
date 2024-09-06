@@ -1,9 +1,9 @@
 Binary Trees
 
 --class problems--
-1. searching
-2. insertion
-3. deletion
+1. (BST) searching
+2. (BST) insertion
+3. (BST) deletion
 4. inorder
 5. postorder
 6. preorder
